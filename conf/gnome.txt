@@ -1,0 +1,11 @@
+gnome-control-center keyboard
+
+Move to left monitor
+wmctrl -r ":ACTIVE:" -e 0,0,0,1366,768
+or
+wmctrl -r ":ACTIVE:" -e 0,0,0,-1,-1
+Shift + Alt + <-
+
+Move to right monitor
+wmctrl -r ":ACTIVE:" -e 0,1440,0,-1,-1
+Shift + Alt + ->
