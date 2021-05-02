@@ -1,28 +1,41 @@
 #!/bin/bash
 
-cd
-sudo apt update
-curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
-echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
-sudo add-apt-repository ppa:mmstick76/alacritty
-sudo apt update
-sudo apt install -y synaptic gnome-tweaks gnome-shell-extensions chrome-gnome-shell nodejs vim-gtk tmux apt-transport-https curl  brave-browser alacritty trash-cli ffmpeg yarn zsh curl git tree wmctrl
+sudo add-apt-repository ppa:aslatter/ppa
 
-vi -E -s -u ./.vimrc +PlugInstall +qall
+cd && sudo apt update
+
+sudo apt-get install -y nodejs fish synaptic gnome-tweaks gnome-shell-extensions chrome-gnome-shell vim-gtk tmux apt-transport-https curl  brave-browser alacritty trash-cli ffmpeg yarn curl git tree wmctrl vlc
+sudo apt install python3-pip
+sudo apt-get install --assume-yes python3-pyqt5
+sudo apt-get install --assume-yes python3-dbus.mainloop.pyqt5
+sudo apt-get install --assume-yes python3-notify
+
+sudo apt-get install libcanberra-gtk-module
+
+wget https://sourceforge.net/projects/hplip/files/hplip/3.21.2/hplip-3.21.2.run/download?use_mirror=nchc /Downloads
+
+wget https://raw.githubusercontent.com/w1am/dotfiles/master/.tmux.conf .tmux.conf
+wget https://raw.githubusercontent.com/w1am/dotfiles/master/.vimrc
 
 gsettings set org.gnome.desktop.interface gtk-theme "HighContrastInverse"
 gsettings set org.gnome.desktop.interface enable-animations false
+dconf write /org/gnome/desktop/sound/event-sounds false
 
-wget https://github.com/w1am/dotfiles/raw/master/.vimrc .vimrc
-wget https://github.com/w1am/dotfiles/raw/master/.tmux.conf .tmux.conf
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-rm -rf .zshrc
-wget https://github.com/w1am/dotfiles/raw/master/.zshrc .zshrc
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
+gsettings set org.gnome.shell.extensions.dash-to-dock intellihide false
+gsettings set org.gnome.shell.extensions.dash-to-dock autohide true
+
+vim +'PlugInstall --sync' +qa
+
+chsh -s /usr/bin/fish
+mkdir -p ~/.config/fish
 
 echo "Setup has finished 🚀"
+
