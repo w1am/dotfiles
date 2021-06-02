@@ -76,23 +76,27 @@ mkdir /usr/local/bin/nvim && mv nvim.appimage /usr/local/bin/nvim
 
 # Neovim Config
 temp=dotfiles_temp_config_download
+
+path=`pwd`
+filename=dotfiles_temp_config_download
+
 if [ -d ~/.config/nvim ]
 then
   rm -rf ~/.config/nvim
 fi
-cp -r /home/$USER/$temp/.config/nvim /home/$USER/.config
-
-if [ -d ~/.config/alacritty ]
-then
-  rm -rf ~/.config/alacritty
-fi
-cp -r /home/$USER/$temp/.config/alacritty /home/$USER/.config
+cp -r $path/$filename/.config/nvim /home/$USER/.config
 
 if [ -d ~/.config/fish ]
 then
   rm -rf ~/.config/fish
 fi
-cp -r /home/$USER/$temp/.config/fish /home/$USER/.config
+cp -r $path/$filename/.config/fish /home/$USER/.config
+
+if [ -d ~/.config/alacritty ]
+then
+  rm -rf ~/.config/alacritty
+fi
+cp -r $path/$filename/.config/alacritty /home/$USER/.config
 
 # Vim Plug
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
@@ -148,5 +152,7 @@ sudo apt install -y postgresql postgresql-contrib
 
 # VLC
 sudo snap install vlc
+
+rm -rf $path/$filename/nvim.appimage
 
 echo "Installation complete"
