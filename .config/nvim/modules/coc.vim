@@ -1,98 +1,8 @@
-call plug#begin(stdpath('data') . '/init.vim')
-Plug 'tomtom/tcomment_vim'
-Plug 'mhartington/oceanic-next'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-call plug#end()
+" Set internal encoding of vim, not needed on neovim, since coc.nvim using some
+" unicode characters in the file autoload/float.vim
+set encoding=utf-8
 
-" Declare CoC extensions
-let g:coc_global_extensions = [
-  \ 'coc-tsserver',
-  \ 'coc-eslint',
-  \ 'coc-pyright'
-  \ ]
-
-set guicursor=n-v-c:block-Cursor
-
-inoremap jk <ESC>
-
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap ) <ESC>:call AutoClose(')') <CR>a
-inoremap ] <ESC>:call AutoClose(']') <CR>a
-inoremap } <ESC>:call AutoClose('}') <CR>a
-inoremap " <ESC>:call AutoClose('"') <CR>a
-inoremap ' <ESC>:call AutoClose("'") <CR>a
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
-
-nnoremap <C-k> :-5<CR>
-inoremap <C-k> <Esc>:-5<CR> i
-nnoremap <C-j> :+5<CR>
-inoremap <C-j> <Esc>:+5<CR> i
-
-nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
-nnoremap <silent> <C-p> :Files<CR>
-nnoremap <silent> <C-g> :GFiles<CR>
-nnoremap <silent> <C-o> :Buffers<CR>
-
-func! AutoClose(...)
-    let cur = getline(".")[col(".")]
-    if cur != a:1
-        if a:1 == "'" || a:1 == '"'
-            execute "normal!a".a:1.a:1
-        else
-            execute "normal!a".a:1
-        endif
-        execute "normal!h"
-    else
-        execute "normal!l"
-    endif
-endfunc
-
-function GetVisualSelection()
-  let raw_search = @"
-  let @/=substitute(escape(raw_search, '\/.*$^~[]'), "\n", '\\n', "g")
-endfunction
-xnoremap // ""y:call GetVisualSelection()<bar>:set hls<cr>
-if has('nvim')
-  set inccommand=nosplit
-  xnoremap /s ""y:call GetVisualSelection()<cr><bar>:%s/
-else
-  xnoremap /s ""y:call GetVisualSelection()<cr><bar>:%s//
-endif"
-
-" Save cursor position
-augroup line_return
-		au!
-		au BufReadPost *
-			\ if line("'\"") > 0 && line("'\"") <= line("$") |
-			\	execute 'normal! g`"zvzz' |
-			\ endif
-augroup END
-
-set clipboard=unnamedplus
-set number
-set expandtab
-set smarttab
-set shiftwidth=2  
-set tabstop=2
-set softtabstop=2
-set mouse=a  
-set nobackup
-set nowritebackup
-set noswapfile
-set laststatus=0
-
-set termguicolors
-colorscheme OceanicNext
-
-au Filetype python setl et ts=2 sw=2
-filetype indent on
-
-" Coc
+let g:coc_node_path = trim(system('which node'))
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -113,7 +23,7 @@ set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-if has("patch-8.1.1564")
+if has("nvim-0.5.0") || has("patch-8.1.1564")
   " Recently vim can merge signcolumn and number column into one
   set signcolumn=number
 else

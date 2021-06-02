@@ -1,60 +1,60 @@
 {
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "vim.incsearch": true,
-    "vim.useSystemClipboard": true,
-    "vim.useCtrlKeys": true,
-    "vim.hlsearch": true,
-    "vim.handleKeys": {
-        "<C-a>": false,
-        "<C-f>": false,
-        "<C-w>": false,
-        "<C-b>": false
-    },
-    "vim.insertModeKeyBindings": [
-        {
-        "before": ["j", "k"],
-        "after": ["<Esc>"]
-        }
-    ],
-    "vim.normalModeKeyBindings": [
-    {
-        "before" : ["<leader>","f"],
-        "commands" : [
-        "workbench.view.explorer"
-        ]
-    },
-    {
-      "before": ["<tab>"],
-      "commands": ["workbench.action.nextEditor"]
-    },
-    {
-      "before": ["<S-tab>"],
-      "commands": ["workbench.action.previousEditor"]
-    }
-    ],
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-        "before": ["<C-n>"],
-        "commands": [":nohl"]
-        }
-    ],
-    "vim.leader": "<space>",
-    "editor.minimap.enabled": false,
-    "editor.tabSize": 2,
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "editor.detectIndentation": false,
-    "tailwindCSS.includeLanguages": {
-      "plaintext": "javascript",
-      "html": "HTML"
-    },
-    "[javascript]": {
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.handleKeys": {
+      "<C-a>": false,
+      "<C-f>": false,
+      "<C-w>": false,
+      "<C-b>": false
+  },
+  "vim.insertModeKeyBindings": [
+      {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+      }
+  ],
+  "vim.normalModeKeyBindings": [
+  {
+      "before" : ["<leader>","f"],
+      "commands" : [
+      "workbench.view.explorer"
+      ]
+  },
+  {
+    "before": ["<tab>"],
+    "commands": ["workbench.action.nextEditor"]
+  },
+  {
+    "before": ["<S-tab>"],
+    "commands": ["workbench.action.previousEditor"]
+  }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+      {
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
+      }
+  ],
+  "vim.leader": "<space>",
+  "editor.minimap.enabled": false,
+  "editor.tabSize": 2,
+  "[typescriptreact]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[typescript]": {
-      "editor.defaultFormatter": "vscode.typescript-language-features"
-    },
-    "typescript.updateImportsOnFileMove.enabled": "always"
+  },
+  "editor.detectIndentation": false,
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "javascript",
+    "html": "HTML"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always"
 }

@@ -2,18 +2,18 @@ let mapleader = " "
 
 source $HOME/.config/nvim/modules/coc.vim                " Coc Settings
 source $HOME/.config/nvim/modules/cursor.vim             " Cursor settings
-source $HOME/.config/nvim/modules/plugins.vim            " Vim Plug
 source $HOME/.config/nvim/modules/general.vim            " General Settings
 source $HOME/.config/nvim/modules/snippets.vim           " Snippets
 source $HOME/.config/nvim/modules/tree.vim               " NVIM Tree 
 source $HOME/.config/nvim/modules/telescope.vim          " Telescope
-source $HOME/.config/nvim/modules/barbar.vim             " Barbar main settings
-source $HOME/.config/nvim/modules/barbar-options.vim     " Barbar options
 
 inoremap jk <ESC>
 
 colorscheme gruvbox
 let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_italic=1
+let g:gruvbox_invert_selection='0'
+let g:indent_blankline_char = '¦'
 
 syntax enable                           " Enables syntax highlighing
 set hidden                              " Required to keep multiple buffers open multiple buffers
@@ -53,8 +53,10 @@ autocmd BufRead *.md set textwidth=80
 set ma
 set buftype=
 
+lua require'plugins'
 lua require'plug-colorizer'
 lua require'telescope-settings'
+lua require'barbar'
 
 nnoremap <C-h> <C-w>h
 nnoremap <M-J> <C-w>j

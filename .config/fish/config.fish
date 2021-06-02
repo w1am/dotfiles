@@ -1,5 +1,9 @@
 function fish_user_key_bindings
-    bind \cC 'commandline ""'
+  bind \cC 'commandline ""'
+end
+
+function nvm
+  bass source ~/.nvm/nvm.sh ';' nvm $argv
 end
 
 alias nv="nvim"
