@@ -74,30 +74,6 @@ sudo apt install -y synaptic
 curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
 mkdir /usr/local/bin/nvim && mv nvim.appimage /usr/local/bin/nvim
 
-# Neovim Config
-temp=dotfiles_temp_config_download
-
-path=`pwd`
-filename=dotfiles_temp_config_download
-
-if [ -d ~/.config/nvim ]
-then
-  rm -rf ~/.config/nvim
-fi
-cp -r $path/$filename/.config/nvim /home/$USER/.config
-
-if [ -d ~/.config/fish ]
-then
-  rm -rf ~/.config/fish
-fi
-cp -r $path/$filename/.config/fish /home/$USER/.config
-
-if [ -d ~/.config/alacritty ]
-then
-  rm -rf ~/.config/alacritty
-fi
-cp -r $path/$filename/.config/alacritty /home/$USER/.config
-
 # Vim Plug
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'

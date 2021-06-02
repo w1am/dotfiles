@@ -3,8 +3,7 @@
 **Install**
 
 ```
-git clone https://github.com/w1am/dotfiles.git dotfiles_temp_config_download \
-  && sudo ./dotfiles_temp_config_download/install.sh
+sudo ./install.sh
 ```
 
 **Features**
