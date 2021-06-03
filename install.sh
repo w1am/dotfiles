@@ -74,9 +74,9 @@ sudo apt install -y synaptic
 curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
 mkdir /usr/local/bin/nvim && mv nvim.appimage /usr/local/bin/nvim
 
-# Vim Plug
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+# Packer
+git clone https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 # Brave browser
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
