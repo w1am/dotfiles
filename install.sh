@@ -24,9 +24,8 @@ sudo apt -y install gnome-tweak-tool
 # Terminal && Shell
 sudo add-apt-repository -y ppa:mmstick76/alacritty
 sudo apt -y install alacritty
-sudo apt -y install fish
-curl -L https://get.oh-my.fish | fish
-chsh -s /usr/bin/fish
+sudo apt -y install zsh
+chsh -s /usr/bin/zsh
 
 # Install gnome shell extensions
 sudo apt install -y chrome-gnome-shell 
