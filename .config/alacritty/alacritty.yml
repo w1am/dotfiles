@@ -90,7 +90,7 @@ key_bindings:
   - { key: Key9, mods: Alt, chars: "\x1b9" }
 
 shell:
-  program: /usr/bin/fish
+  program: /usr/bin/zsh
   args:
     - -l
     - -c
