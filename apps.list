@@ -1,0 +1,14 @@
+npm
+apt-transport-https curl
+trash-cli
+gnome-tweak-tool
+alacritty
+zsh
+chrome-gnome-shell
+gnome-shell-extensions
+tmux
+synaptic
+postgresql
+postgresql-contrib
+brave-browser
+python3-pip

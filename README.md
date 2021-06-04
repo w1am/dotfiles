@@ -1,15 +1,4 @@
-!["Setup"](https://github.com/w1am/dotfiles/blob/master/media/setup.png?raw=true)
-
-**Install**
-
 ```
-sudo ./install.sh
+sudo git clone https://github.com/w1am/dotfiles.git\
+  /home/$USER/Downloads/w1am && chmod +x install.sh && ./install.sh
 ```
-
-**Features**
-
-- Java - ```CocInstall coc-java```
-- Python - ```CocInstall coc-python```
-- JSON - ```CocInstall coc-json```
-- Typescript - ```CocInstall coc-tsserver```
-- Snippets - ```CocInstall coc-snippets```

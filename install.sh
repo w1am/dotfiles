@@ -1,133 +1,74 @@
 #!/bin/bash
 
+DOWNLOAD_DIR=/home/$USER/Downloads
+
+# Update system
+sudo apt update
+
+# Verify git
+command -v git >/dev/null 2>&1 ||
+{ echo >&2 "Git is not installed. Installing..";
+  sudo apt install git
+}
+
 if ! [ $(id -u) = 0 ]; then
   echo "The script need to be run as root." >&2
   exit 1
 fi
 
-# Update system
-sudo apt update
+# Nvim pre release
+sudo snap install nvim --edge --classic
+
+# Gnome tweak tool and alacritty
+sudo apt-add-repository -y universe
+sudo add-apt-repository -y ppa:mmstick76/alacritty
+
+# Brave browser
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 
 # General
-sudo apt install -y git
-sudo apt install -y npm
+cat apps.list | xargs sudo apt-get -y install
+
+# yarn
 sudo npm install --global yarn
-sudo apt install apt-transport-https curl
 
-# Trash
-apt install -y trash-cli
+# Oh my zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# Gnome Tweak Tools
-sudo apt-add-repository universe
-sudo apt -y install gnome-tweak-tool
+mkdir -p /home/$USER/.config/alacritty
+mkdir -p /home/$USER/.config/nvim
 
-# Terminal && Shell
-sudo add-apt-repository -y ppa:mmstick76/alacritty
-sudo apt -y install alacritty
-sudo apt -y install zsh
-chsh -s /usr/bin/zsh
-
-# Install gnome shell extensions
-sudo apt install -y chrome-gnome-shell 
-sudo apt install -y gnome-shell-extensions
-
-# TMUX Config
-wget -P /home/$USER https://raw.githubusercontent.com/w1am/dotfiles/master/.tmux.conf
-
-# Alacritty Config
-wget -P /home/$USER https://raw.githubusercontent.com/w1am/dotfiles/master/.config/alacritty/.tmux.conf
-
-# Install Patched Fonts
-mkdir -p ~/.local/share/fonts
-
-if [ -d ~/.local/share/fonts ]
-then
-  RegularFont=https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf?raw=true
-  BoldFont=https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Hack/Bold/complete/Hack%20Bold%20Nerd%20Font%20Complete.ttf?raw=true
-  ItalicFont=https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Hack/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete.ttf?raw=true
-
-  curl -fLo ~/.local/share/fonts/'Hack Regular Nerd Font Complete.ttf' $RegularFont
-  curl -fLo ~/.local/share/fonts/'Hack Bold Nerd Font Complete.ttf' $BoldFont
-  curl -fLo ~/.local/share/fonts/'Hack Italic Nerd Font Complete.ttf' $ItalicFont
-fi
+# TMUX Config and ZSH Config
+cp $DOWNLOAD_DIR/w1am/.tmux.conf /home/$USER
+cp $DOWNLOAD_DIR/w1am/.zshrc /home/$USER
 
 # NVM
-omf install bass
-omf install nvm
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 
 # Install Node
 nvm install --lts
-nvm alias default 0.12.7
-
-# Install Alacritty themes
-npx alacritty-themes
-
-# Tmux
-sudo apt install -y tmux
-
-# Package Manager
-sudo apt install -y synaptic
-
-# Nvim pre release
-curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
-mkdir /usr/local/bin/nvim && mv nvim.appimage /usr/local/bin/nvim
 
 # Packer
 git clone https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
-# Brave browser
-sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-sudo apt install -y brave-browser
-
-
-# Turn on universal access mode and set reduce keyboard delay for fast typing experience
-gsettings set org.gnome.desktop.a11y always-show-universal-access-status true
-gsettings set org.gnome.desktop.peripherals.keyboard delay 198
-
-# Configure general settings and turn on dark theme
-gsettings set org.gnome.desktop.interface gtk-theme "HighContrastInverse"
-gsettings set org.gnome.desktop.interface enable-animations false
-dconf write /org/gnome/desktop/sound/event-sounds false
-
-gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
-gsettings set org.gnome.shell.extensions.dash-to-dock intellihide false
-gsettings set org.gnome.shell.extensions.dash-to-dock autohide true
-
-# Power settings
-gsettings set org.gnome.settings-daemon.plugins.power idle-dim false
-gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'suspend'
-gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 3600
-gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
-gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'nothing'
-
-# Change locale format
-gsettings set org.gnome.system.locale region 'en_GB.UTF-8'
-
-# Change default terminal
-gsettings set org.gnome.desktop.default-applications.terminal exec 'alacritty'
-
-# Top bar
-gsettings set org.gnome.desktop.interface clock-show-seconds true
-gsettings set org.gnome.desktop.interface clock-show-date true
-
-# VSCODE
-sudo snap install code --classic
-
 # Languages
-yarn global add pyright
-yarn global add typescript
-pip install jedi
+yarn global add pyright, typescript
+pip3 install jedi
 python3 -m pip install --user --upgrade pynvim
 
-# PostgreSQL
-sudo apt install -y postgresql postgresql-contrib
+echo "1/3 Setting up gnome..."
+source ./ubuntu.sh
+sleep 2
+echo "2/3 Installing patched fonts.."
+source ./patched_fonts.sh
+echo "3/3 Loading configs..."
+sleep 2
+source ./load_config.sh
 
-# VLC
-sudo snap install vlc
+# Set default shell
+sudo chsh -s /usr/bin/zsh
 
-rm -rf $path/$filename/nvim.appimage
+echo "Done."
 
-echo "Installation complete"
