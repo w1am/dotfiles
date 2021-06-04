@@ -1,6 +1,6 @@
 set guicursor=n-v-c:block-Cursor
 
-nnoremap <silent> <C-q> :nohlsearch<CR><C-L>
+nnoremap <silent> <Leader>l :nohlsearch<CR><C-L>
 
 nnoremap <C-k> :-5<CR>
 inoremap <C-k> <Esc>:-5<CR> i

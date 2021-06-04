@@ -36,7 +36,7 @@ draw_bold_text_with_bright_colors: false
 
 colors:
   primary:
-    background: "#191c1e"
+    background: "#0e1011"
     foreground: "#ebdbb2"
   normal:
     black: "#282828"
