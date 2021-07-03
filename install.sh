@@ -19,6 +19,10 @@ fi
 # Nvim pre release
 sudo snap install nvim --edge --classic
 
+# Symlink stuff
+sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/node" "/usr/local/bin/node"
+sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/npm" "/usr/local/bin/npm"
+
 # Gnome tweak tool and alacritty
 sudo apt-add-repository -y universe
 sudo add-apt-repository -y ppa:mmstick76/alacritty
