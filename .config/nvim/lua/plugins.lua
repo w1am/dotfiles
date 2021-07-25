@@ -17,7 +17,7 @@ return require('packer').startup(function()
 
   use 'honza/vim-snippets'
 
-  use 'gruvbox-community/gruvbox'
+  use 'wojciechkepka/vim-github-dark'
 
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'

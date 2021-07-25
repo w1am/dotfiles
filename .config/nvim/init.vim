@@ -9,11 +9,7 @@ source $HOME/.config/nvim/modules/telescope.vim          " Telescope
 
 inoremap jk <ESC>
 
-colorscheme gruvbox
-let g:gruvbox_contrast_dark='hard'
-let g:gruvbox_italic=1
-let g:gruvbox_invert_selection='0'
-let g:indent_blankline_char = '¦'
+colorscheme ghdark
 
 syntax enable                           " Enables syntax highlighing
 set hidden                              " Required to keep multiple buffers open multiple buffers
