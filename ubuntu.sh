@@ -3,6 +3,7 @@
 # Turn on universal access mode and set reduce keyboard delay for fast typing experience
 gsettings set org.gnome.desktop.a11y always-show-universal-access-status true
 gsettings set org.gnome.desktop.peripherals.keyboard delay 198
+xset r rate 300 50
 
 # Configure general settings and turn on dark theme
 gsettings set org.gnome.desktop.interface gtk-theme "HighContrastInverse"
