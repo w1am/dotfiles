@@ -1,49 +1,49 @@
 {
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.enablePreviewFromCodeNavigation": false,
   "vim.incsearch": true,
   "vim.useSystemClipboard": true,
   "vim.useCtrlKeys": true,
   "vim.hlsearch": true,
   "vim.handleKeys": {
-      "<C-a>": false,
-      "<C-f>": false,
-      "<C-w>": false,
-      "<C-b>": false
+    "<C-a>": false,
+    "<C-f>": false,
+    "<C-w>": false,
+    "<C-b>": false
   },
   "vim.insertModeKeyBindings": [
-      {
+    {
       "before": ["j", "k"],
       "after": ["<Esc>"]
-      }
+    }
   ],
   "vim.normalModeKeyBindings": [
-  {
-      "before" : ["<leader>","f"],
-      "commands" : [
-      "workbench.view.explorer"
-      ]
-  },
-  {
-    "before": ["<tab>"],
-    "commands": ["workbench.action.nextEditor"]
-  },
-  {
-    "before": ["<S-tab>"],
-    "commands": ["workbench.action.previousEditor"]
-  }
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["workbench.view.explorer"]
+    },
+    {
+      "before": ["<tab>"],
+      "commands": ["workbench.action.nextEditor"]
+    },
+    {
+      "before": ["<S-tab>"],
+      "commands": ["workbench.action.previousEditor"]
+    }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
-      {
+    {
       "before": ["<C-n>"],
       "commands": [":nohl"]
-      }
+    }
   ],
   "vim.leader": "<space>",
   "editor.minimap.enabled": false,
-  "editor.tabSize": 2,
   "[typescriptreact]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.detectIndentation": false,
   "tailwindCSS.includeLanguages": {
@@ -56,5 +56,42 @@
   "[typescript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
-  "typescript.updateImportsOnFileMove.enabled": "always"
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.fontSize": 14,
+  "git.autofetch": true,
+  // Vue development
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "vetur.experimental.templateInterpolationService": false,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "files.associations": {
+    "*.csv": "plaintext"
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "vue",
+      "autoFix": true
+    }
+  ],
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
