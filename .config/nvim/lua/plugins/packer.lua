@@ -4,13 +4,11 @@ return require('packer').startup(function()
 
   use 'numToStr/Comment.nvim'
 
-  use 'jiangmiao/auto-pairs'
-
   use 'romgrk/barbar.nvim'
 
   use 'tanvirtin/monokai.nvim'
 
-  use 'folke/lsp-colors.nvim'
+  use 'windwp/nvim-autopairs'
 
   use {
     'kyazdani42/nvim-tree.lua',
@@ -29,8 +27,6 @@ return require('packer').startup(function()
   use 'glepnir/lspsaga.nvim'
 
   use 'folke/trouble.nvim'
-
-  use 'christoomey/vim-tmux-navigator'
 
   use { 'hrsh7th/nvim-cmp',
     requires = {

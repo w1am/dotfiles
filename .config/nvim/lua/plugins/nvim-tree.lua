@@ -1,5 +1,4 @@
 vim.g.nvim_tree_gitignore = 1
-vim.g.nvim_tree_ignore = { '.git', 'node_modules', '.cache', '__pycache__', '.DS_Store' }
 vim.g.nvim_tree_quit_on_open = 1
 vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_highlight_opened_files = 1
@@ -35,6 +34,7 @@ require('nvim-tree').setup({
   auto_close          = false,
   open_on_tab         = true,
   allow_resize = false,
+  nvim_tree_ignore = { '.git', 'node_modules', '.cache', '__pycache__', '.DS_Store' },
   update_to_buf_dir   = {
     enable = true,
     auto_open = true,

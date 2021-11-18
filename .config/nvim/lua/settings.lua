@@ -25,13 +25,7 @@ opt.signcolumn = "yes"
 cmd [[au BufWritePre * :%s/\s\+$//e]]
 
 opt.termguicolors = true
--- cmd [[colorscheme tokyonight]]
 
-g.tokyonight_style = "night"
-g.tokyonight_italic_functions = true
-g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
-
-g.molokai_original = 1
 g.tmux_navigator_no_mappings = 1
 
 opt.hidden = false

@@ -2,7 +2,6 @@ local trouble = require("trouble.providers.telescope")
 
 require('telescope').setup({
   defaults = {
-    preview = false,
     entry_prefix = "  ",
     initial_mode = "insert",
     selection_strategy = "reset",

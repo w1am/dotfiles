@@ -19,11 +19,6 @@ map('n', '<C-j>', '<C-w>j', default_opts)
 map('n', '<C-k>', '<C-w>k', default_opts)
 map('n', '<C-l>', '<C-w>l', default_opts)
 
-map('n', '<C-h>', ':TmuxNavigateLeft<cr>', { noremap = true, silent = true })
-map('n', '<C-j>', ':TmuxNavigateDown<cr>', { noremap = true, silent = true })
-map('n', '<C-k>', ':TmuxNavigateUp<cr>', { noremap = true, silent = true })
-map('n', '<C-l>', ':TmuxNavigateRight<cr>', { noremap = true, silent = true })
-
 map('n', '<C-p>', "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<cr>", {noremap=true})
 map('n', '<leader>fg', "<cmd>lua require('telescope.builtin').live_grep()<cr>", {noremap=true})
 
