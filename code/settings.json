@@ -4,10 +4,14 @@
   "workbench.editor.enablePreview": false,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.enablePreviewFromCodeNavigation": false,
+  "editor.smoothScrolling": false,
   "vim.incsearch": true,
   "vim.useSystemClipboard": true,
   "vim.useCtrlKeys": true,
   "vim.hlsearch": true,
+  "vim.enableNeovim": true,
+  "vim.neovimConfigPath": "/Users/will/.config/nvim",
+  "vim.neovimPath": "/Users/will/.config/nvim",
   "vim.handleKeys": {
     "<C-a>": false,
     "<C-f>": false,
@@ -38,34 +42,38 @@
     {
       "before": ["<C-n>"],
       "commands": [":nohl"]
+    },
+    {
+      "before": ["u"],
+      "after": [],
+      "commands": [
+        {
+          "command": "undo"
+        }
+      ]
+    },
+    {
+      "before": ["<C-r>"],
+      "after": [],
+      "commands": [
+        {
+          "command": "redo"
+        }
+      ]
     }
   ],
   "vim.leader": "<space>",
-  "editor.minimap.enabled": false,
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "editor.detectIndentation": false,
   "tailwindCSS.includeLanguages": {
     "plaintext": "javascript",
     "html": "HTML"
   },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
+  "editor.cursorBlinking": "solid",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "editor.fontSize": 14,
   "git.autofetch": true,
-  // Vue development
   "editor.tabSize": 2,
-  "editor.formatOnSave": true,
   "vetur.format.defaultFormatter.html": "js-beautify-html",
-  "[vue]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "vetur.experimental.templateInterpolationService": false,
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook"
@@ -77,21 +85,118 @@
   "files.associations": {
     "*.csv": "plaintext"
   },
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    {
-      "language": "vue",
-      "autoFix": true
-    }
+  "editor.matchBrackets": "near",
+  "editor.renderLineHighlight": "none",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python",
+    "editor.tabSize": 4,
+    "editor.formatOnType": true
+  },
+  "[java]": {
+    "editor.tabSize": 4
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/__pycache__": true
+  },
+  // Custom tags for the parser to use
+  "yaml.customTags": [
+    "!And",
+    "!If",
+    "!Not",
+    "!Equals",
+    "!Or",
+    "!FindInMap sequence",
+    "!Base64",
+    "!Cidr",
+    "!Ref",
+    "!Sub",
+    "!GetAtt",
+    "!GetAZs",
+    "!ImportValue",
+    "!Select",
+    "!Select sequence",
+    "!Split",
+    "!Join sequence"
   ],
+  "terminal.integrated.fontSize": 16,
+  "redhat.telemetry.enabled": true,
+  "python.defaultInterpreterPath": "/Users/will/miniconda3/envs/mbi",
+  "activestate.statePath": "/Users/will/.local/bin/state",
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
+  "gopls": {
+    "build.experimentalWorkspaceModule": true
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "editor.inlineSuggest.enabled": true,
+  "editor.minimap.enabled": false,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": true,
+    "scminput": false,
+    "yaml": true
+  },
+  "go.toolsManagement.autoUpdate": true,
+  "workbench.startupEditor": "none",
+  "notebook.output.textLineLimit": 100,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "eslint.alwaysShowStatus": true,
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
+  "prettier.jsxSingleQuote": true,
+  "prettier.singleQuote": true,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "jupyter.widgetScriptSources": ["jsdelivr.com", "unpkg.com"],
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "git.openRepositoryInParentFolders": "always",
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "terminal.integrated.inheritEnv": false,
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[html]": {
+  "jupyter.askForKernelRestart": false,
+  "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[json]": {
+  "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "workbench.colorCustomizations": {
+    "terminalCursor.background": "#fff",
+    "terminalCursor.foreground": "#ffffff00"
+  },
+  "debug.console.fontSize": 14,
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1,
+    "asvetliakov.vscode-neovim": 1
+  },
+  "editor.cursorSurroundingLines": 8,
+  "github.copilot.advanced": {
+    "slashCommands": {
+      "createWorkspace": true,
+      "createNotebook": true,
+      "search": true
+    }
+  },
+  "editor.codeLens": false,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false,
 }
