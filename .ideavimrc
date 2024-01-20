@@ -1,0 +1,7 @@
+set clipboard=unnamedplus
+
+inoremap jk <Esc>
+
+set scrolloff=8
+
+set commentary

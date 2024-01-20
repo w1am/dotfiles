@@ -1,17 +1,31 @@
-if vim.g.vscode then
-  vim.api.nvim_set_keymap('n', '<S-tab>', ':Tabprevious<CR>', {noremap = true, silent = true})
-  vim.api.nvim_set_keymap('n', '<tab>', ':Tabnext<CR>', {noremap = true, silent = true})
+vim.o.clipboard = 'unnamedplus'
 
-  vim.api.nvim_set_keymap('i', 'jk', '<Esc>', {noremap = true})
-else
-  vim.api.nvim_set_keymap('i', 'jk', '<Esc>', {noremap = true, silent = true})
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
-  vim.wo.number = true
-  vim.o.clipboard = "unnamedplus"
+vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
+vim.api.nvim_set_option('guicursor', 'n:block-Cursor,i:block-Cursor,v:block-Cursor')
 
-  vim.o.tabstop = 2
-  vim.o.shiftwidth = 2
-  vim.o.expandtab = true
-end
+vim.opt.scrolloff = 8
 
+vim.opt.undofile = true
 
+vim.api.nvim_create_autocmd('BufRead', {
+  callback = function(opts)
+    vim.api.nvim_create_autocmd('BufWinEnter', {
+      once = true,
+      buffer = opts.buf,
+      callback = function()
+        local ft = vim.bo[opts.buf].filetype
+        local last_known_line = vim.api.nvim_buf_get_mark(opts.buf, '"')[1]
+        if
+          not (ft:match('commit') and ft:match('rebase'))
+          and last_known_line > 1
+          and last_known_line <= vim.api.nvim_buf_line_count(opts.buf)
+        then
+          vim.api.nvim_feedkeys([[g`"]], 'nx', false)
+        end
+      end,
+    })
+  end,
+})
