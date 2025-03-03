@@ -1,0 +1,10 @@
+[user]
+	email = william-chong@outlook.com
+	name = William Chong
+[gpg]
+	program = C:/Program Files (x86)/GnuPG/bin/gpg.exe
+[commit]
+	gpgsign = true
+[core]
+	editor = C:/tools/neovim/nvim-win64/bin/nvim.exe
+	autocrlf = false
