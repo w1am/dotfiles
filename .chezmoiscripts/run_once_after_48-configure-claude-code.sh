@@ -20,7 +20,6 @@ defaults=$(cat << 'EOF'
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "theme": "dark",
-  "defaultShell": "zsh",
   "editorMode": "vim",
   "tui": "fullscreen",
   "autoUpdatesChannel": "latest",
