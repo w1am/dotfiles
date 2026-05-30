@@ -16,7 +16,7 @@ it finishes, open a new terminal.
 
 - **zsh** + Oh My Zsh, **tmux**, **Neovim**
 - Toolchains: **Node** (via fnm), **pnpm**, **bun**, **Rust**
-- Apps: **VS Code**, **GitHub CLI**, **Claude Code**
+- Apps: **VS Code**, **GitHub CLI**, **Claude Code**, **Docker**
 
 ## Daily use
 
