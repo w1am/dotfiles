@@ -1,0 +1,23 @@
+  {
+    "permissions": {
+      "defaultMode": "auto",
+      "allow": [
+        "Bash(git *)",
+        "Bash(chezmoi *)",
+        "Bash(zsh -n *)",
+        "Bash(sh -n *)",
+        "Bash(bash -n *)",
+        "Bash(find . *)",
+        "Bash(find ~ *)",
+        "Bash(grep *)",
+        "Bash(ls *)",
+        "Bash(ls)",
+        "Bash(which *)",
+        "Bash(jq *)",
+        "Bash(wc *)",
+        "Bash(sort *)",
+        "Bash(diff *)"
+      ]
+    }
+  }
+
