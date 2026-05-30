@@ -1,0 +1,64 @@
+[user]
+	name = w1am
+	email = 33353798+w1am@users.noreply.github.com
+
+[core]
+	editor = nvim
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = true
+
+[push]
+	autoSetupRemote = true
+	followTags = true
+
+[merge]
+	conflictStyle = zdiff3
+
+[rebase]
+	autoStash = true
+	autosquash = true
+	updateRefs = true
+
+[rerere]
+	enabled = true
+
+[diff]
+	algorithm = histogram
+	colorMoved = zebra
+	mnemonicPrefix = true
+	renames = copies
+
+[fetch]
+	prune = true
+	pruneTags = true
+
+[branch]
+	sort = -committerdate
+
+[tag]
+	sort = version:refname
+
+[commit]
+	verbose = true
+
+[help]
+	autocorrect = prompt
+
+[column]
+	ui = auto
+
+[log]
+	date = iso
+
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	lg = log --oneline --graph --decorate --all
+
+[include]
+	path = ~/.gitconfig.local
