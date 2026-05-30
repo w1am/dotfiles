@@ -30,6 +30,13 @@ defaults=$(cat << 'EOF'
   },
   "worktree": {
     "symlinkDirectories": ["node_modules", ".cache"]
+  },
+  "env": {
+    "DISABLE_TELEMETRY": "1",
+    "DO_NOT_TRACK": "1",
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
+    "CLAUDE_CODE_NO_FLICKER": "1",
+    "CLAUDE_CODE_DISABLE_MOUSE": "1"
   }
 }
 EOF
