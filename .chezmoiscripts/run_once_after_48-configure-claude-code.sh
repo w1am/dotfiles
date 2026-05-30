@@ -29,10 +29,6 @@ defaults=$(cat << 'EOF'
   "permissions": {
     "defaultMode": "acceptEdits"
   },
-  "env": {
-    "EDITOR": "nvim",
-    "VISUAL": "nvim"
-  },
   "worktree": {
     "symlinkDirectories": ["node_modules", ".cache"]
   }
