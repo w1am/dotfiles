@@ -40,6 +40,30 @@ defaults=$(cat << 'EOF'
   "worktree": {
     "symlinkDirectories": ["node_modules", ".cache"]
   },
+  "enabledPlugins": {
+    "code-review@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "github@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "claude-code-setup@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "pr-review-toolkit@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "chrome-devtools-mcp@claude-plugins-official": true,
+    "plugin-dev@claude-plugins-official": true,
+    "explanatory-output-style@claude-plugins-official": true,
+    "playground@claude-plugins-official": true,
+    "learning-output-style@claude-plugins-official": true,
+    "csharp-lsp@claude-plugins-official": true,
+    "data-engineering@claude-plugins-official": true,
+    "cloudflare@claude-plugins-official": true,
+    "shopify-ai-toolkit@claude-plugins-official": true,
+    "duckdb-skills@claude-plugins-official": true
+  },
   "env": {
     "DISABLE_TELEMETRY": "1",
     "DO_NOT_TRACK": "1",
