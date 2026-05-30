@@ -117,9 +117,6 @@ autoload -Uz add-zsh-hook
 add-zsh-hook chpwd _auto_venv   # on directory change
 _auto_venv                      # on shell startup (new tabs/splits)
 
-# Rust (rustup / cargo) — adds ~/.cargo/bin to PATH
-[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
-
 # Bun
 export BUN_INSTALL="$HOME/.bun"
 [ -d "$BUN_INSTALL/bin" ] && export PATH="$BUN_INSTALL/bin:$PATH"
