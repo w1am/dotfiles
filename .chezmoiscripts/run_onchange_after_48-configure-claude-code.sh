@@ -21,7 +21,7 @@ defaults=$(cat << 'EOF'
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "theme": "dark",
   "editorMode": "vim",
-  "tui": "fullscreen",
+  "tui": "default",
   "attribution": {
     "commit": "",
     "pr": ""
@@ -40,7 +40,6 @@ defaults=$(cat << 'EOF'
     "DO_NOT_TRACK": "1",
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
     "CLAUDE_CODE_NO_FLICKER": "1",
-    "CLAUDE_CODE_DISABLE_MOUSE": "1",
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "CLAUDE_CODE_SHELL": "zsh"
   }
