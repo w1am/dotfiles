@@ -107,8 +107,5 @@ export BUN_INSTALL="$HOME/.bun"
 command -v fdfind >/dev/null 2>&1 && alias fd='fdfind'
 command -v batcat >/dev/null 2>&1 && alias bat='batcat'
 
-# zoxide — smarter cd; use `z <dir>` to jump to frequently-used dirs
-command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh)"
-
 # fzf — fuzzy finder key bindings (Ctrl-R history, Ctrl-T files) + completion
 command -v fzf >/dev/null 2>&1 && source <(fzf --zsh) 2>/dev/null
