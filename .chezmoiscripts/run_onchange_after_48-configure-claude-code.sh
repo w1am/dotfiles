@@ -30,7 +30,7 @@ defaults=$(cat << 'EOF'
   "includeGitInstructions": true,
   "showTurnDuration": true,
   "permissions": {
-    "defaultMode": "acceptEdits"
+    "defaultMode": "auto"
   },
   "worktree": {
     "symlinkDirectories": ["node_modules", ".cache"]
