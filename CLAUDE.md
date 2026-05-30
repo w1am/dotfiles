@@ -6,8 +6,9 @@ for operating it.
 
 ## Rules
 
-- **Never commit secrets.** No private keys, tokens, or credentials — SSH keys are
-  per-machine and generated at bootstrap, never synced.
+- **Never commit secrets.** No private keys, tokens, or credentials. GitHub auth is
+  per-machine via `gh auth login` (HTTPS) at bootstrap — tokens live in the keyring,
+  never synced.
 - **Edit the source, never the target.** Change `dot_zshrc`, not `~/.zshrc`; then
   `chezmoi apply`. If a live file drifted, `chezmoi add <path>` first.
 - **Filename prefixes are behavior.** `dot_`, `private_`, `run_once_`, `run_onchange_`

@@ -8,8 +8,9 @@ My personal dotfiles, managed with [chezmoi](https://www.chezmoi.io/).
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply w1am
 ```
 
-This installs everything and applies the configs. Afterwards, add the printed
-SSH key to GitHub, then open a new terminal.
+This installs everything and applies the configs. During the run, `gh auth login`
+prompts you to authenticate with GitHub (over HTTPS — no SSH key to set up); after
+it finishes, open a new terminal.
 
 ## What's inside
 
