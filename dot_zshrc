@@ -66,3 +66,11 @@ bindkey '^[[B' history-substring-search-down 2>/dev/null || bindkey '^[[B' down-
 alias ll='ls -lah'
 alias ..='cd ..'
 alias ...='cd ../..'
+
+# Commit & push all chezmoi-managed dotfile changes in one shot.
+# Usage: `update` (default message) or `update some message here`
+update() {
+  chezmoi git -- add -A &&
+  chezmoi git -- commit -m "${*:-update dotfiles}" &&
+  chezmoi git -- push
+}
