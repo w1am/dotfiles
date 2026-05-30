@@ -4,7 +4,10 @@
 # NODE_VERSION below to install/default a different version on every machine.
 set -eu
 
-NODE_VERSION="--lts"          # e.g. "--lts", "22", "v20.11.0"
+# To pin a specific version, change to e.g. "22" or "v20.11.0" and set
+# USE_LTS=false. With USE_LTS=true, installs LTS and uses the lts-latest alias.
+USE_LTS=true
+NODE_VERSION="22"              # only used when USE_LTS=false
 fnm_bin="$HOME/.local/bin/fnm"
 
 if [ ! -x "$fnm_bin" ]; then
@@ -16,10 +19,17 @@ fi
 export PATH="$HOME/.local/bin:$PATH"
 eval "$("$fnm_bin" env)"
 
-echo "Installing Node ($NODE_VERSION)..."
-"$fnm_bin" install $NODE_VERSION
-"$fnm_bin" use $NODE_VERSION
-"$fnm_bin" default "$(node -v)"
+if [ "$USE_LTS" = "true" ]; then
+    echo "Installing Node (LTS)..."
+    "$fnm_bin" install --lts
+    "$fnm_bin" use lts-latest
+    "$fnm_bin" default lts-latest
+else
+    echo "Installing Node ($NODE_VERSION)..."
+    "$fnm_bin" install "$NODE_VERSION"
+    "$fnm_bin" use "$NODE_VERSION"
+    "$fnm_bin" default "$NODE_VERSION"
+fi
 
 echo "Enabling corepack + pnpm..."
 corepack enable
