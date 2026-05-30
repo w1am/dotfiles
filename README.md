@@ -9,8 +9,8 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply w1am
 ```
 
 This installs everything and applies the configs. During the run, `gh auth login`
-prompts you to authenticate with GitHub (over HTTPS — no SSH key to set up); after
-it finishes, open a new terminal.
+prompts you to authenticate with GitHub over SSH — gh generates an SSH key and
+uploads it for you; after it finishes, open a new terminal.
 
 ## What's inside
 
