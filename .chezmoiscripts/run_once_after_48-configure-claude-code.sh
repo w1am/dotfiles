@@ -22,6 +22,10 @@ defaults=$(cat << 'EOF'
   "theme": "dark",
   "editorMode": "vim",
   "tui": "fullscreen",
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "autoUpdatesChannel": "latest",
   "includeGitInstructions": true,
   "showTurnDuration": true,
