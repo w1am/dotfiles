@@ -29,6 +29,11 @@ defaults=$(cat << 'EOF'
   "autoUpdatesChannel": "latest",
   "includeGitInstructions": true,
   "showTurnDuration": true,
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh",
+    "padding": 0
+  },
   "permissions": {
     "defaultMode": "auto"
   },
