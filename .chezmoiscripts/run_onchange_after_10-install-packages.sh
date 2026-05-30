@@ -5,9 +5,12 @@
 set -eu
 
 # Edit this list to add/remove packages — changing it re-runs the script.
-# Includes build deps for Rust (build-essential/pkg-config/libssl-dev) and
-# tools the dev-toolchain installers need (curl/gnupg/unzip).
-packages="zsh git gh tmux wl-clipboard curl gnupg unzip build-essential pkg-config libssl-dev"
+# Core shells/tools, modern CLI essentials, dev-installer deps (curl/gnupg/unzip),
+# and Rust build deps (build-essential/pkg-config/libssl-dev).
+packages="zsh git gh tmux wl-clipboard \
+curl wget gnupg unzip \
+ripgrep fd-find bat fzf eza zoxide jq tree htop ncdu \
+build-essential pkg-config libssl-dev"
 
 if ! command -v apt-get >/dev/null 2>&1; then
     echo "apt-get not found — skipping package install (non-Debian system?)"
