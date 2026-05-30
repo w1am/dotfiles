@@ -15,7 +15,7 @@ SSH key to GitHub, then open a new terminal.
 
 - **zsh** + Oh My Zsh, **tmux**, **Neovim**
 - Toolchains: **Node** (via fnm), **pnpm**, **bun**, **Rust**
-- Apps: **VS Code**, **GitHub CLI**
+- Apps: **VS Code**, **GitHub CLI**, **Claude Code**
 
 ## Daily use
 
