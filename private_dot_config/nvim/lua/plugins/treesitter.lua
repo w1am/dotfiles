@@ -27,6 +27,7 @@ return {
       "python",
       "css",
       "html",
+      "c_sharp",
       "gitignore",
       "yaml",
       "typst"
