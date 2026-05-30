@@ -18,5 +18,10 @@ fi
 
 # Use gh's stored token as git's credential helper so HTTPS pushes need no
 # manual key setup. Idempotent — rewrites the helper config each run.
-gh auth setup-git
+#
+# Write the helper into ~/.gitconfig.local (included by the synced ~/.gitconfig)
+# rather than ~/.gitconfig itself, so chezmoi never sees this machine-specific,
+# keyring-backed config as drift. GIT_CONFIG_GLOBAL redirects where gh's
+# underlying `git config --global` writes (git >= 2.32).
+GIT_CONFIG_GLOBAL="$HOME/.gitconfig.local" gh auth setup-git
 echo "GitHub HTTPS auth configured — 'update' / git push works over HTTPS."
