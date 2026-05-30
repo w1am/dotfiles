@@ -1,0 +1,65 @@
+# ~/.zshrc — Oh My Zsh configuration
+
+export ZSH="$HOME/.oh-my-zsh"
+
+# ---------------------------------------------------------------------------
+# Theme
+# ---------------------------------------------------------------------------
+ZSH_THEME="agnoster"   # swap for "robbyrussell" if you don't have a Powerline font
+
+# ---------------------------------------------------------------------------
+# Spelling correction
+# ---------------------------------------------------------------------------
+ENABLE_CORRECTION="true"          # correct mistyped commands
+setopt CORRECT_ALL                # also correct mistyped arguments
+
+# Show completion dots while waiting
+COMPLETION_WAITING_DOTS="true"
+
+# ---------------------------------------------------------------------------
+# Plugins
+#   - git:                    aliases + branch info
+#   - zsh-completions:        extra completion definitions
+#   - zsh-autosuggestions:    fish-like suggestions from history
+#   - zsh-syntax-highlighting: colorize the command line (load LAST)
+# ---------------------------------------------------------------------------
+plugins=(
+  git
+  sudo
+  command-not-found
+  colored-man-pages
+  zsh-completions
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+
+# zsh-completions needs its fpath added before OMZ runs compinit
+fpath+=${ZSH}/custom/plugins/zsh-completions/src
+
+source "$ZSH/oh-my-zsh.sh"
+
+# ---------------------------------------------------------------------------
+# History (Oh My Zsh sets sensible defaults; these expand on them)
+# ---------------------------------------------------------------------------
+HISTFILE=~/.zsh_history
+HISTSIZE=50000
+SAVEHIST=50000
+
+setopt SHARE_HISTORY          # share history across all open sessions
+setopt INC_APPEND_HISTORY     # write each command as it's entered
+setopt HIST_IGNORE_ALL_DUPS   # drop older duplicate when a new one is added
+setopt HIST_IGNORE_SPACE      # commands starting with a space aren't recorded
+setopt HIST_REDUCE_BLANKS     # strip superfluous blanks
+setopt HIST_VERIFY            # show expanded history command before running
+setopt EXTENDED_HISTORY       # record timestamp + duration
+
+# Prefix-based history search with the arrow keys
+bindkey '^[[A' history-substring-search-up   2>/dev/null || bindkey '^[[A' up-line-or-history
+bindkey '^[[B' history-substring-search-down 2>/dev/null || bindkey '^[[B' down-line-or-history
+
+# ---------------------------------------------------------------------------
+# Aliases / personal tweaks
+# ---------------------------------------------------------------------------
+alias ll='ls -lah'
+alias ..='cd ..'
+alias ...='cd ../..'
