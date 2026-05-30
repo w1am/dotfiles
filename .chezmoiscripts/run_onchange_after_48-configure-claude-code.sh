@@ -1,7 +1,7 @@
 #!/bin/sh
 # Merge sensible defaults into ~/.claude/settings.json using jq.
 # Existing values always win — this never overwrites what's already set.
-# run_once_: runs once per machine; safe because jq only fills in gaps.
+# run_onchange_: re-merges when defaults below change; existing values still win.
 set -eu
 
 settings="$HOME/.claude/settings.json"

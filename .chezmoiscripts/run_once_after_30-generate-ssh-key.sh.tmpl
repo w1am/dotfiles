@@ -11,7 +11,7 @@ fi
 
 mkdir -p "$HOME/.ssh" && chmod 700 "$HOME/.ssh"
 echo "Generating a new SSH key for this machine..."
-ssh-keygen -t ed25519 -C "william-chong@outlook.com" -f "$key" -N "" -q
+ssh-keygen -t ed25519 -C "{{ .email }}" -f "$key" -N "" -q
 
 # Trust GitHub's host key so the first push doesn't fail on verification
 ssh-keygen -F github.com >/dev/null 2>&1 || \

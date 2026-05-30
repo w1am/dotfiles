@@ -32,10 +32,11 @@ COMPLETION_WAITING_DOTS="true"
 
 # ---------------------------------------------------------------------------
 # Plugins
-#   - git:                    aliases + branch info
-#   - zsh-completions:        extra completion definitions
-#   - zsh-autosuggestions:    fish-like suggestions from history
-#   - zsh-syntax-highlighting: colorize the command line (load LAST)
+#   - git:                      aliases + branch info
+#   - zsh-completions:          extra completion definitions
+#   - zsh-autosuggestions:      fish-like suggestions from history
+#   - zsh-syntax-highlighting:  colorize the command line (must precede hss)
+#   - history-substring-search: prefix-based ↑/↓ history search (load LAST)
 # ---------------------------------------------------------------------------
 plugins=(
   git
@@ -45,6 +46,7 @@ plugins=(
   zsh-completions
   zsh-autosuggestions
   zsh-syntax-highlighting
+  history-substring-search
 )
 
 # zsh-completions needs its fpath added before OMZ runs compinit
@@ -59,17 +61,12 @@ HISTFILE=~/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
 
-setopt SHARE_HISTORY          # share history across all open sessions
-setopt INC_APPEND_HISTORY     # write each command as it's entered
+setopt SHARE_HISTORY          # share history across all open sessions (implies INC_APPEND_HISTORY)
 setopt HIST_IGNORE_ALL_DUPS   # drop older duplicate when a new one is added
 setopt HIST_IGNORE_SPACE      # commands starting with a space aren't recorded
 setopt HIST_REDUCE_BLANKS     # strip superfluous blanks
 setopt HIST_VERIFY            # show expanded history command before running
 setopt EXTENDED_HISTORY       # record timestamp + duration
-
-# Prefix-based history search with the arrow keys
-bindkey '^[[A' history-substring-search-up   2>/dev/null || bindkey '^[[A' up-line-or-history
-bindkey '^[[B' history-substring-search-down 2>/dev/null || bindkey '^[[B' down-line-or-history
 
 # ---------------------------------------------------------------------------
 # Aliases / personal tweaks
@@ -83,6 +80,7 @@ alias e='exit'
 # Usage: `update` (default message) or `update some message here`
 update() {
   chezmoi git -- add -A &&
+  chezmoi git -- status --short &&
   chezmoi git -- commit -m "${*:-update dotfiles}" &&
   chezmoi git -- push
 }

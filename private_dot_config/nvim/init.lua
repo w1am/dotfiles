@@ -1,7 +1,5 @@
 require("config.lazy")
 
-vim.o.clipboard = 'unnamedplus'
-
 vim.o.number = true            -- show line numbers
 vim.o.expandtab = true         -- use spaces instead of tabs
 vim.o.shiftwidth = 4           -- shift 4 spaces when indenting
