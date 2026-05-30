@@ -9,7 +9,7 @@ set -eu
 # and Rust build deps (build-essential/pkg-config/libssl-dev).
 packages="zsh git gh tmux wl-clipboard \
 curl wget gnupg unzip \
-ripgrep fd-find bat fzf eza zoxide jq tree htop ncdu \
+ripgrep fd-find bat fzf zoxide jq tree htop ncdu \
 build-essential pkg-config libssl-dev"
 
 if ! command -v apt-get >/dev/null 2>&1; then

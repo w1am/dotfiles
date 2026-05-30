@@ -107,13 +107,6 @@ export BUN_INSTALL="$HOME/.bun"
 command -v fdfind >/dev/null 2>&1 && alias fd='fdfind'
 command -v batcat >/dev/null 2>&1 && alias bat='batcat'
 
-# eza — modern ls replacement
-if command -v eza >/dev/null 2>&1; then
-    alias ll='eza -lah --git --group-directories-first'
-    alias la='eza -a --group-directories-first'
-    alias lt='eza --tree --level=2'
-fi
-
 # zoxide — smarter cd; use `z <dir>` to jump to frequently-used dirs
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh)"
 
