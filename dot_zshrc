@@ -19,7 +19,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # ---------------------------------------------------------------------------
 # Theme
 # ---------------------------------------------------------------------------
-ZSH_THEME="agnoster"   # swap for "robbyrussell" if you don't have a Powerline font
+ZSH_THEME="robbyrussell"   # minimal single-line prompt; no Powerline font needed
 
 # ---------------------------------------------------------------------------
 # Spelling correction
