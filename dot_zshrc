@@ -97,6 +97,26 @@ update() {
 # (npm ships with Node; pnpm is provided through corepack.)
 command -v fnm >/dev/null 2>&1 && eval "$(fnm env --use-on-cd)"
 
+# Python venv auto-activation — mirrors fnm's --use-on-cd for `.venv` dirs.
+# Walks up from $PWD to find a `.venv/bin/activate`; activates it when entering
+# the tree and deactivates on leaving. Runs on every `cd` AND on shell startup,
+# so new tmux tabs/splits inherit the active venv without a manual `source`.
+_auto_venv() {
+  local dir="$PWD"
+  while [[ "$dir" != "/" ]]; do
+    if [[ -f "$dir/.venv/bin/activate" ]]; then
+      [[ "$VIRTUAL_ENV" != "$dir/.venv" ]] && source "$dir/.venv/bin/activate"
+      return
+    fi
+    dir="${dir:h}"
+  done
+  # No .venv in the tree — drop any venv we previously auto-activated.
+  [[ -n "$VIRTUAL_ENV" ]] && command -v deactivate >/dev/null 2>&1 && deactivate
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook chpwd _auto_venv   # on directory change
+_auto_venv                      # on shell startup (new tabs/splits)
+
 # Rust (rustup / cargo) — adds ~/.cargo/bin to PATH
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
