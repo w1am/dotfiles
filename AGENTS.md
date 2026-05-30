@@ -57,9 +57,24 @@ here. `CLAUDE.md` and `README.md` are symlinks to this file.
 
 ## Repo map
 
-- `dot_zshrc` → `~/.zshrc` (Oh My Zsh; defines the `update` function; PATH includes `~/.local/bin`)
+- `dot_zshrc` → `~/.zshrc` (Oh My Zsh; `update` function; inits fnm/cargo/bun; PATH includes `~/.local/bin`, `~/.bun/bin`)
 - `dot_tmux.conf` → `~/.tmux.conf` (backtick prefix, vi mode, `wl-copy` clipboard)
 - `private_dot_config/nvim/` → `~/.config/nvim` (lazy.nvim)
 - `.chezmoiexternal.toml` → clones Oh My Zsh + zsh plugins
-- `.chezmoiscripts/` → install-packages, install-neovim, set-default-shell, generate-ssh-key
+- `.chezmoiscripts/` (run in numeric order):
+  - `10-install-packages` (apt; build deps + curl/gnupg/unzip), `12-install-vscode` (MS apt repo)
+  - `15-install-neovim` (upstream tarball → `~/.local`)
+  - `20-set-default-shell` (chsh), `30-generate-ssh-key` (per-machine)
+  - `40-install-rust` (rustup → `~/.cargo`), `45-install-node` (fnm + Node + corepack/pnpm), `46-install-bun` (→ `~/.bun`)
 - `.chezmoiignore` → keeps the three doc files out of `$HOME`
+
+## Dev toolchains
+
+- **Node**: managed by `fnm` (binary in `~/.local/bin`). `fnm env --use-on-cd` in `.zshrc`
+  auto-switches versions per directory. Change the default by editing `NODE_VERSION`
+  in `45-install-node`. **npm** ships with Node; **pnpm** comes via `corepack` (do not
+  apt-install or npm-install pnpm). **bun** is separate, in `~/.bun`.
+- **Rust**: `rustup`/`cargo` in `~/.cargo`. Update with `rustup update`. `~/.cargo/env`
+  is sourced in `.zshrc`. Crates need the C toolchain from `build-essential` (apt).
+- Installers for fnm/bun pipe a remote script to a shell; these run during
+  `chezmoi apply` (user-authorized) and may be blocked if an agent runs them directly.

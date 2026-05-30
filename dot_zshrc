@@ -74,3 +74,17 @@ update() {
   chezmoi git -- commit -m "${*:-update dotfiles}" &&
   chezmoi git -- push
 }
+
+# ---------------------------------------------------------------------------
+# Dev toolchains
+# ---------------------------------------------------------------------------
+# Node via fnm — auto-switches version on `cd` into a dir with .node-version/.nvmrc.
+# (npm ships with Node; pnpm is provided through corepack.)
+command -v fnm >/dev/null 2>&1 && eval "$(fnm env --use-on-cd)"
+
+# Rust (rustup / cargo) — adds ~/.cargo/bin to PATH
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+[ -d "$BUN_INSTALL/bin" ] && export PATH="$BUN_INSTALL/bin:$PATH"
