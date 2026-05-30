@@ -3,6 +3,17 @@
 # Ensure user-local binaries (e.g. chezmoi) are on PATH
 export PATH="$HOME/.local/bin:$PATH"
 
+# ---------------------------------------------------------------------------
+# Auto-start tmux for interactive terminals
+# ---------------------------------------------------------------------------
+# Attach to (or create) a single persistent session named "main". Skipped when:
+# already inside tmux ($TMUX), non-interactive shells, and the VS Code terminal
+# (where tmux tends to fight the editor's terminal integration).
+if command -v tmux >/dev/null 2>&1 && [[ -o interactive ]] \
+    && [[ -z "$TMUX" ]] && [[ "$TERM_PROGRAM" != "vscode" ]]; then
+    exec tmux new-session -A -s main
+fi
+
 export ZSH="$HOME/.oh-my-zsh"
 
 # ---------------------------------------------------------------------------
