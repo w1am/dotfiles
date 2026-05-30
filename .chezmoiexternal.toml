@@ -36,3 +36,14 @@
         args = ["--depth=1"]
     [".oh-my-zsh/custom/plugins/zsh-completions".pull]
         args = ["--ff-only"]
+
+# JetBrainsMono Nerd Font — provides the Powerline/icon glyphs the agnoster
+# prompt needs (without it, separators render as tofu boxes). Extracted into the
+# user font dir; the run_onchange font-cache script picks it up. To update, bump
+# the version in the URL *and* FONT_VERSION in the rebuild-font-cache script.
+[".local/share/fonts/JetBrainsMonoNerdFont"]
+    type = "archive"
+    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip"
+    refreshPeriod = "8760h"   # fonts rarely change; a version bump forces re-download anyway
+    stripComponents = 0
+    include = ["*.ttf"]       # keep only font files (drop LICENSE/README from the zip)
