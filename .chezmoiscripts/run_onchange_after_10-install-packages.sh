@@ -5,7 +5,7 @@
 set -eu
 
 # Edit this list to add/remove packages — changing it re-runs the script.
-packages="zsh git gh"
+packages="zsh git gh tmux wl-clipboard"
 
 if ! command -v apt-get >/dev/null 2>&1; then
     echo "apt-get not found — skipping package install (non-Debian system?)"
@@ -14,7 +14,8 @@ fi
 
 need=""
 for pkg in $packages; do
-    command -v "$pkg" >/dev/null 2>&1 || need="$need $pkg"
+    # Check by package name (command name may differ, e.g. wl-clipboard -> wl-copy)
+    dpkg -s "$pkg" >/dev/null 2>&1 || need="$need $pkg"
 done
 
 if [ -n "$need" ]; then
