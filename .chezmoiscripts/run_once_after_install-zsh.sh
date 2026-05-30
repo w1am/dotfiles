@@ -3,11 +3,12 @@
 # Idempotent: skips anything already in place. May prompt for sudo/your password.
 set -eu
 
-# 1. Install zsh + git via apt if missing
+# 1. Install zsh + git + GitHub CLI via apt if missing
 if command -v apt-get >/dev/null 2>&1; then
     need=""
     command -v zsh >/dev/null 2>&1 || need="$need zsh"
     command -v git >/dev/null 2>&1 || need="$need git"
+    command -v gh  >/dev/null 2>&1 || need="$need gh"
     if [ -n "$need" ]; then
         echo "Installing:$need"
         sudo apt-get update
