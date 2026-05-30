@@ -22,4 +22,20 @@ if [ -n "$zsh_path" ] && [ "${SHELL:-}" != "$zsh_path" ]; then
     chsh -s "$zsh_path" || echo "chsh failed — run 'chsh -s $zsh_path' manually"
 fi
 
+# 3. Ensure this machine has its own SSH key (per-machine identity, never synced)
+key="$HOME/.ssh/id_ed25519"
+if [ ! -f "$key" ]; then
+    mkdir -p "$HOME/.ssh" && chmod 700 "$HOME/.ssh"
+    echo "Generating a new SSH key for this machine..."
+    ssh-keygen -t ed25519 -C "william-chong@outlook.com" -f "$key" -N "" -q
+    # Trust GitHub's host key so the first push doesn't fail
+    ssh-keygen -F github.com >/dev/null 2>&1 || \
+        ssh-keyscan -t ed25519 github.com >> "$HOME/.ssh/known_hosts" 2>/dev/null
+    echo ""
+    echo ">>> ADD THIS PUBLIC KEY TO GITHUB (Settings > SSH and GPG keys):"
+    cat "$key.pub"
+    echo ">>> or run: gh ssh-key add $key.pub --title \"\$(hostname)\""
+    echo ""
+fi
+
 echo "zsh bootstrap complete."
