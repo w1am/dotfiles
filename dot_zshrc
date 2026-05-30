@@ -30,6 +30,11 @@ setopt CORRECT_ALL                # also correct mistyped arguments
 # Show completion dots while waiting
 COMPLETION_WAITING_DOTS="true"
 
+# Silence the audible bell (line editor, completion, and history-search beeps)
+unsetopt BEEP
+unsetopt LIST_BEEP
+unsetopt HIST_BEEP
+
 # ---------------------------------------------------------------------------
 # Plugins
 #   - git:                      aliases + branch info

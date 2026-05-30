@@ -10,6 +10,7 @@ vim.o.swapfile = false         -- disable swapfile
 
 vim.opt.scrolloff = 8
 vim.opt.undofile = true
+vim.opt.belloff = "all"        -- no audible (or visual) bell
 
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
 vim.api.nvim_set_option('guicursor', 'n:block-Cursor,i:block-Cursor,v:block-Cursor')
