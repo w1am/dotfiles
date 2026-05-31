@@ -1,6 +1,4 @@
 #!/bin/sh
-# Install Google Chrome from Google's official apt repository.
-# run_onchange_: re-runs if this script changes. Idempotent. Needs sudo (password).
 set -eu
 
 command -v apt-get >/dev/null 2>&1 || { echo "not apt-based — skipping Chrome"; exit 0; }

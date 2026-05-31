@@ -1,8 +1,4 @@
 #!/bin/sh
-# Rebuild the fontconfig cache so fonts installed via .chezmoiexternal.toml
-# (into ~/.local/share/fonts) become discoverable to apps. run_onchange_:
-# re-runs only when this script's contents change — bump FONT_VERSION below in
-# lockstep with the JetBrainsMono external URL to force a refresh on every machine.
 set -eu
 
 FONT_VERSION="v3.4.0"   # keep in sync with JetBrainsMono in .chezmoiexternal.toml

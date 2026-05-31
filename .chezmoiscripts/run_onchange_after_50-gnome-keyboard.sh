@@ -1,7 +1,4 @@
 #!/bin/sh
-# Apply GNOME keyboard preferences (key repeat on, snappier delay). User-local,
-# no sudo. run_onchange_: re-applies when the values below change. Skips cleanly
-# when there's no graphical/dconf session (e.g. headless or non-GNOME).
 set -eu
 
 command -v gsettings >/dev/null 2>&1 || { echo "gsettings not found — skipping"; exit 0; }

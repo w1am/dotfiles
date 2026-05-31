@@ -1,6 +1,4 @@
 #!/bin/sh
-# Install Visual Studio Code from Microsoft's official apt repository.
-# run_onchange_: re-runs if this script changes. Idempotent. Needs sudo (password).
 set -eu
 
 command -v apt-get >/dev/null 2>&1 || { echo "not apt-based — skipping VS Code"; exit 0; }

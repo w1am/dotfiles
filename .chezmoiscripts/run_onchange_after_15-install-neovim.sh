@@ -1,13 +1,9 @@
 #!/bin/sh
-# Install Neovim from the official release tarball into ~/.local (no sudo —
-# ~/.local/bin is already on PATH). apt's neovim can lag on older distros, so
-# this tracks upstream. run_onchange_: re-installs when this script changes —
-# bump NVIM_CHANNEL (or just edit a comment) to force an update to latest.
 set -eu
 
 NVIM_CHANNEL="stable"          # "stable" = latest stable; or pin a tag e.g. "v0.11.6"
 prefix="$HOME/.local"
-dest="$prefix/nvim"            # extracted release lives here (not ~/.local/share/nvim, which is nvim's data dir)
+dest="$prefix/nvim"            # not ~/.local/share/nvim, which is nvim's data dir
 
 arch="$(uname -m)"
 case "$arch" in

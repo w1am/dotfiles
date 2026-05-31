@@ -1,7 +1,4 @@
 #!/bin/sh
-# Install Bun (JS runtime, bundler, package manager) into ~/.bun. User-local, no
-# sudo. run_onchange_: re-runs if this script changes; Bun self-updates via
-# `bun upgrade`. Needs unzip (provided by install-packages).
 set -eu
 
 if [ -x "$HOME/.bun/bin/bun" ]; then

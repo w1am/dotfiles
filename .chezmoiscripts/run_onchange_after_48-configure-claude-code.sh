@@ -1,9 +1,4 @@
 #!/bin/sh
-# Merge sensible defaults into ~/.claude/settings.json and a baseline
-# permission allow-list into ~/.claude/settings.local.json, using jq.
-# Existing values always win — this never overwrites what's already set, and
-# the allow-list is unioned so per-machine entries Claude added are preserved.
-# run_onchange_: re-merges when defaults below change; existing values still win.
 set -eu
 
 settings="$HOME/.claude/settings.json"
@@ -16,7 +11,6 @@ fi
 
 mkdir -p "$HOME/.claude"
 
-# Start from existing file, or empty object if none exists yet.
 existing="$(cat "$settings" 2>/dev/null || echo '{}')"
 
 defaults=$(cat << 'EOF'
@@ -96,9 +90,6 @@ mv "${settings}.tmp" "$settings"
 
 echo "Claude Code settings updated at $settings"
 
-# Baseline permission grants for ~/.claude/settings.local.json. Unioned into the
-# existing allow-list (appended only if missing) so entries Claude added locally
-# survive every re-run.
 allow=$(cat << 'EOF'
 [
   "Bash(bun:*)",

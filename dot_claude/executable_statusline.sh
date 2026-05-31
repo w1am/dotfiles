@@ -9,7 +9,6 @@ DURATION_MS=$(echo "$input" | jq -r '.cost.total_duration_ms // 0')
 
 CYAN='\033[36m'; GREEN='\033[32m'; YELLOW='\033[33m'; RED='\033[31m'; RESET='\033[0m'
 
-# Pick bar color based on context usage
 if [ "$PCT" -ge 90 ]; then BAR_COLOR="$RED"
 elif [ "$PCT" -ge 70 ]; then BAR_COLOR="$YELLOW"
 else BAR_COLOR="$GREEN"; fi

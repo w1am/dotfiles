@@ -1,6 +1,4 @@
 #!/bin/sh
-# Make zsh the default login shell. run_once_: a per-machine action, done once.
-# May prompt for your password (chsh). Safe to re-run — it no-ops if already set.
 set -eu
 
 zsh_path="$(command -v zsh || true)"

@@ -1,7 +1,4 @@
 #!/bin/sh
-# Install Docker Engine + CLI + Buildx/Compose plugins from Docker's official apt
-# repository, and add you to the `docker` group so `docker` works without sudo.
-# run_onchange_: re-runs if this script changes. Idempotent. Needs sudo (password).
 set -eu
 
 command -v apt-get >/dev/null 2>&1 || { echo "not apt-based — skipping Docker"; exit 0; }
@@ -10,7 +7,6 @@ if command -v docker >/dev/null 2>&1; then
     echo "Docker already installed: $(docker --version)"
 else
     echo "Adding Docker's official apt repository..."
-    # Docker keys the repo per-distro; derive the Ubuntu codename from os-release.
     codename="$(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")"
     arch="$(dpkg --print-architecture)"
 
@@ -25,8 +21,6 @@ else
     echo "Docker installed: $(docker --version)"
 fi
 
-# Let the invoking user run docker without sudo. Idempotent — usermod is a no-op
-# if already a member. Takes effect on next login (or `newgrp docker` now).
 if ! id -nG "$USER" | tr ' ' '\n' | grep -qx docker; then
     echo "Adding $USER to the docker group (re-login required to take effect)..."
     sudo usermod -aG docker "$USER"

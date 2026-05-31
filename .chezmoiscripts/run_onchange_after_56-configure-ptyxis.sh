@@ -1,9 +1,4 @@
 #!/bin/sh
-# Point Ptyxis (the GNOME/Ubuntu default terminal) at the JetBrainsMono Nerd Font
-# so the agnoster prompt's Powerline glyphs render. Ptyxis stores the font
-# globally via GSettings (org.gnome.Ptyxis), not per-profile. run_onchange_:
-# re-runs when this script changes — edit FONT below to restyle. No-ops cleanly
-# where Ptyxis isn't installed (other terminals, headless, non-GNOME).
 set -eu
 
 FONT="JetBrainsMono Nerd Font 12"

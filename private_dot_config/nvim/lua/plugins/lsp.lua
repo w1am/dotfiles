@@ -1,7 +1,3 @@
--- LSP: mason installs the server binaries locally (no sudo, lives in nvim's
--- data dir), mason-lspconfig bridges mason names -> lspconfig and auto-enables
--- each installed server via vim.lsp.enable (Neovim 0.11+ native LSP), and
--- nvim-lspconfig ships the per-server config definitions.
 return {
   "mason-org/mason-lspconfig.nvim",
   event = { "BufReadPre", "BufNewFile" },
@@ -11,27 +7,20 @@ return {
     "neovim/nvim-lspconfig",
   },
   opts = {
-    -- Servers to install + enable. mason-lspconfig pulls these via mason and
-    -- enables them automatically; the binaries are Node-based (ts_ls, eslint,
-    -- html, cssls, jsonls) and Python (pyright, ruff).
     ensure_installed = {
-      -- Node / web
-      "ts_ls",   -- TypeScript & JavaScript
-      "eslint",  -- ESLint diagnostics + fixes
+      "ts_ls",
+      "eslint",
       "html",
       "cssls",
       "jsonls",
-      -- Python
-      "pyright", -- types, completion, navigation
-      "ruff",    -- linting + formatting (built-in language server)
-      -- C# (needs the .NET SDK on PATH to analyze projects)
-      "omnisharp",
+      "pyright",
+      "ruff",
+      "omnisharp", -- needs .NET SDK on PATH to analyze projects
     },
   },
   config = function(_, opts)
     require("mason-lspconfig").setup(opts)
 
-    -- Buffer-local keymaps once a server attaches.
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("user_lsp_attach", { clear = true }),
       callback = function(args)

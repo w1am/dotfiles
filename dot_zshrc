@@ -1,14 +1,5 @@
-# ~/.zshrc — Oh My Zsh configuration
-
-# Ensure user-local binaries (e.g. chezmoi) are on PATH
 export PATH="$HOME/.local/bin:$PATH"
 
-# ---------------------------------------------------------------------------
-# Auto-start tmux for interactive terminals
-# ---------------------------------------------------------------------------
-# Attach to (or create) a single persistent session named "main". Skipped when:
-# already inside tmux ($TMUX), non-interactive shells, and the VS Code terminal
-# (where tmux tends to fight the editor's terminal integration).
 if command -v tmux >/dev/null 2>&1 && [[ -o interactive ]] \
     && [[ -z "$TMUX" ]] && [[ "$TERM_PROGRAM" != "vscode" ]]; then
     exec tmux new-session -A -s main
@@ -16,27 +7,14 @@ fi
 
 export ZSH="$HOME/.oh-my-zsh"
 
-# ---------------------------------------------------------------------------
-# Theme
-# ---------------------------------------------------------------------------
-ZSH_THEME="robbyrussell"   # minimal single-line prompt; no Powerline font needed
+ZSH_THEME="robbyrussell"
 
-# Show completion dots while waiting
 COMPLETION_WAITING_DOTS="true"
 
-# Silence the audible bell (line editor, completion, and history-search beeps)
 unsetopt BEEP
 unsetopt LIST_BEEP
 unsetopt HIST_BEEP
 
-# ---------------------------------------------------------------------------
-# Plugins
-#   - git:                      aliases + branch info
-#   - zsh-completions:          extra completion definitions
-#   - zsh-autosuggestions:      fish-like suggestions from history
-#   - zsh-syntax-highlighting:  colorize the command line (must precede hss)
-#   - history-substring-search: prefix-based ↑/↓ history search (load LAST)
-# ---------------------------------------------------------------------------
 plugins=(
   git
   sudo
@@ -53,31 +31,23 @@ fpath+=${ZSH}/custom/plugins/zsh-completions/src
 
 source "$ZSH/oh-my-zsh.sh"
 
-# ---------------------------------------------------------------------------
-# History (Oh My Zsh sets sensible defaults; these expand on them)
-# ---------------------------------------------------------------------------
 HISTFILE=~/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
 
-setopt SHARE_HISTORY          # share history across all open sessions (implies INC_APPEND_HISTORY)
-setopt HIST_IGNORE_ALL_DUPS   # drop older duplicate when a new one is added
-setopt HIST_IGNORE_SPACE      # commands starting with a space aren't recorded
-setopt HIST_REDUCE_BLANKS     # strip superfluous blanks
-setopt HIST_VERIFY            # show expanded history command before running
-setopt EXTENDED_HISTORY       # record timestamp + duration
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
+setopt EXTENDED_HISTORY
 
-# ---------------------------------------------------------------------------
-# Aliases / personal tweaks
-# ---------------------------------------------------------------------------
 alias ll='ls -lah'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias e='exit'
 alias cls='clear'
 
-# Commit & push all chezmoi-managed dotfile changes in one shot.
-# Usage: `update` (default message) or `update some message here`
 update() {
   chezmoi git -- add -A &&
   chezmoi git -- status --short &&
@@ -85,17 +55,8 @@ update() {
   chezmoi git -- push
 }
 
-# ---------------------------------------------------------------------------
-# Dev toolchains
-# ---------------------------------------------------------------------------
-# Node via fnm — auto-switches version on `cd` into a dir with .node-version/.nvmrc.
-# (npm ships with Node; pnpm is provided through corepack.)
 command -v fnm >/dev/null 2>&1 && eval "$(fnm env --use-on-cd)"
 
-# Python venv auto-activation — mirrors fnm's --use-on-cd for `.venv` dirs.
-# Walks up from $PWD to find a `.venv/bin/activate`; activates it when entering
-# the tree and deactivates on leaving. Runs on every `cd` AND on shell startup,
-# so new tmux tabs/splits inherit the active venv without a manual `source`.
 _auto_venv() {
   local dir="$PWD"
   while [[ "$dir" != "/" ]]; do
@@ -105,39 +66,23 @@ _auto_venv() {
     fi
     dir="${dir:h}"
   done
-  # No .venv in the tree — drop any venv we previously auto-activated.
   [[ -n "$VIRTUAL_ENV" ]] && command -v deactivate >/dev/null 2>&1 && deactivate
 }
 autoload -Uz add-zsh-hook
-add-zsh-hook chpwd _auto_venv   # on directory change
-_auto_venv                      # on shell startup (new tabs/splits)
+add-zsh-hook chpwd _auto_venv
+_auto_venv
 
-# Bun
 export BUN_INSTALL="$HOME/.bun"
 [ -d "$BUN_INSTALL/bin" ] && export PATH="$BUN_INSTALL/bin:$PATH"
 
-# .NET SDK (installed user-local into ~/.dotnet). Adds the SDK and the global
-# tools dir (`dotnet tool install -g`) to PATH; needed by OmniSharp for C#.
 export DOTNET_ROOT="$HOME/.dotnet"
 if [ -d "$DOTNET_ROOT" ]; then
   export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
 fi
 
-# ---------------------------------------------------------------------------
-# CLI tools
-# ---------------------------------------------------------------------------
-# Debian/Ubuntu ship these under different command names
 command -v fdfind >/dev/null 2>&1 && alias fd='fdfind'
 command -v batcat >/dev/null 2>&1 && alias bat='batcat'
 
-# fzf — fuzzy finder key bindings (Ctrl-R history, Ctrl-T files) + completion
 command -v fzf >/dev/null 2>&1 && source <(fzf --zsh) 2>/dev/null
 
-# ---------------------------------------------------------------------------
-# Machine-local overrides
-# ---------------------------------------------------------------------------
-# Sourced last so it can extend or override anything above. This file is NOT
-# managed by chezmoi (never `chezmoi add` it) — it stays on this machine only.
-# Put host-specific env vars and secrets (API tokens, etc.) here; nothing here
-# is ever committed or synced. Safe to be absent: the guard no-ops if missing.
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
