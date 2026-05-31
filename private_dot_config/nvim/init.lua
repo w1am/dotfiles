@@ -1,4 +1,5 @@
 require("config.lazy")
+require("config.keymaps")
 
 vim.o.number = true            -- show line numbers
 vim.o.expandtab = true         -- use spaces instead of tabs
