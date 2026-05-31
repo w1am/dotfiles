@@ -21,12 +21,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # ---------------------------------------------------------------------------
 ZSH_THEME="robbyrussell"   # minimal single-line prompt; no Powerline font needed
 
-# ---------------------------------------------------------------------------
-# Spelling correction
-# ---------------------------------------------------------------------------
-ENABLE_CORRECTION="true"          # correct mistyped commands
-setopt CORRECT_ALL                # also correct mistyped arguments
-
 # Show completion dots while waiting
 COMPLETION_WAITING_DOTS="true"
 
