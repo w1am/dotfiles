@@ -12,7 +12,7 @@ if [ ! -x "$fnm_bin" ]; then
 fi
 
 export PATH="$HOME/.local/bin:$PATH"
-eval "$("$fnm_bin" env)"
+eval "$("$fnm_bin" env --shell bash)"
 
 if [ "$USE_LTS" = "true" ]; then
     echo "Installing Node (LTS)..."

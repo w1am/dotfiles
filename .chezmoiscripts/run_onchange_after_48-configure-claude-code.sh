@@ -41,7 +41,7 @@ defaults=$(cat << 'EOF'
         "hooks": [
           {
             "type": "command",
-            "command": "paplay --volume=30000 /usr/share/sounds/freedesktop/stereo/complete.oga"
+            "command": "~/.claude/notify-sound.sh"
           }
         ]
       }
