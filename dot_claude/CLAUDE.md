@@ -22,3 +22,20 @@ Treat my instructions as intent, not literal spec. If you see a better approach,
 - **No explanatory comments.** Don't add `//`, `#`, or `/* ... */` narration to code. Keep it clean and self-documenting.
 - **Exceptions only:** a mathematical algorithm or highly complex business logic.
 - Put rationale in commit messages or the conversation, not the source.
+
+## Git commit policy
+
+- All commits must be in English.
+- Use the present tense ("Add feature" not "Added feature").
+- Use the imperative mood ("Refactor code" not "Refactored code").
+- Don't include description in the commit message, only the title unless strictly necessary.
+- If the commit is a fix, include "Fix" in the title (e.g., "Fix bug in user authentication").
+- If the commit is a feature, include "Add" in the title (e.g., "Add new API endpoint for user registration").
+- If the commit is a refactor, include "Refactor" in the title (e.g., "Refactor user authentication logic").
+
+## Communication style
+
+- Relax grammar for concision. Drop articles, connectors, filler where meaning survives.
+- Get to the point. No preamble, no recap of my question.
+- No em dashes. Use commas, periods, or restructure.
+- Connect ideas naturally. Don't pad to sound complete.
