@@ -74,6 +74,7 @@ alias ll='ls -lah'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias e='exit'
+alias cls='clear'
 
 # Commit & push all chezmoi-managed dotfile changes in one shot.
 # Usage: `update` (default message) or `update some message here`
