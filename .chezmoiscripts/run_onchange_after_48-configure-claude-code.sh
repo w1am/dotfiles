@@ -1,10 +1,13 @@
 #!/bin/sh
-# Merge sensible defaults into ~/.claude/settings.json using jq.
-# Existing values always win — this never overwrites what's already set.
+# Merge sensible defaults into ~/.claude/settings.json and a baseline
+# permission allow-list into ~/.claude/settings.local.json, using jq.
+# Existing values always win — this never overwrites what's already set, and
+# the allow-list is unioned so per-machine entries Claude added are preserved.
 # run_onchange_: re-merges when defaults below change; existing values still win.
 set -eu
 
 settings="$HOME/.claude/settings.json"
+local_settings="$HOME/.claude/settings.local.json"
 
 if ! command -v jq >/dev/null 2>&1; then
     echo "jq not found — skipping Claude Code settings (install jq first)"
@@ -27,6 +30,7 @@ defaults=$(cat << 'EOF'
     "pr": ""
   },
   "autoUpdatesChannel": "latest",
+  "teammateMode": "tmux",
   "includeGitInstructions": true,
   "showTurnDuration": true,
   "statusLine": {
@@ -79,3 +83,43 @@ printf '%s' "$existing" | jq --argjson defaults "$defaults" '$defaults * .' > "$
 mv "${settings}.tmp" "$settings"
 
 echo "Claude Code settings updated at $settings"
+
+# Baseline permission grants for ~/.claude/settings.local.json. Unioned into the
+# existing allow-list (appended only if missing) so entries Claude added locally
+# survive every re-run.
+allow=$(cat << 'EOF'
+[
+  "Bash(bun:*)",
+  "Bash(npx:*)",
+  "Bash(node:*)",
+  "Bash(git add:*)",
+  "Bash(git commit:*)",
+  "Bash(git status:*)",
+  "Bash(git diff:*)",
+  "Bash(git log:*)",
+  "Bash(git branch:*)",
+  "Bash(git checkout:*)",
+  "Bash(git push origin:*)",
+  "Bash(gh:*)",
+  "Bash(mkdir:*)",
+  "Bash(ls:*)",
+  "Bash(grep:*)",
+  "Edit(*)",
+  "Write(*)",
+  "WebFetch",
+  "Skill(*)"
+]
+EOF
+)
+
+existing_local="$(cat "$local_settings" 2>/dev/null || echo '{}')"
+
+printf '%s' "$existing_local" | jq --argjson allow "$allow" '
+  .permissions.allow = reduce $allow[] as $entry (
+    (.permissions.allow // []);
+    if index($entry) then . else . + [$entry] end
+  )
+' > "${local_settings}.tmp"
+mv "${local_settings}.tmp" "$local_settings"
+
+echo "Claude Code local settings updated at $local_settings"
