@@ -41,6 +41,18 @@ defaults=$(cat << 'EOF'
   "permissions": {
     "defaultMode": "auto"
   },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "paplay --volume=30000 /usr/share/sounds/freedesktop/stereo/complete.oga"
+          }
+        ]
+      }
+    ]
+  },
   "worktree": {
     "symlinkDirectories": ["node_modules", ".cache"]
   },
