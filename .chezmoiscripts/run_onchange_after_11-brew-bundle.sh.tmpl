@@ -1,0 +1,13 @@
+#!/bin/sh
+# Install macOS CLI tools via Homebrew, mirroring the apt list in 10-install-packages.
+# run_onchange_: the Brewfile hash below makes this re-run whenever ~/.Brewfile changes.
+# Darwin-only — skips cleanly on the apt machines.
+set -eu
+
+# Brewfile hash: {{ include "dot_Brewfile" | sha256sum }}
+
+[ "$(uname -s)" = "Darwin" ] || { echo "not macOS — skipping brew bundle"; exit 0; }
+command -v brew >/dev/null 2>&1 || { echo "Homebrew not found — install from https://brew.sh, then re-apply; skipping"; exit 0; }
+
+brew bundle --global
+echo "brew bundle complete"

@@ -34,7 +34,7 @@
     [".oh-my-zsh/custom/plugins/zsh-completions".pull]
         args = ["--ff-only"]
 
-[".local/share/fonts/JetBrainsMonoNerdFont"]
+{{ if eq .chezmoi.os "darwin" }}["Library/Fonts/JetBrainsMonoNerdFont"]{{ else }}[".local/share/fonts/JetBrainsMonoNerdFont"]{{ end }}
     type = "archive"
     url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip"
     refreshPeriod = "8760h"

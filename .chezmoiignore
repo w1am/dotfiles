@@ -1,2 +1,3 @@
 /README.md
 /CLAUDE.md
+{{ if ne .chezmoi.os "darwin" }}.Brewfile{{ end }}
