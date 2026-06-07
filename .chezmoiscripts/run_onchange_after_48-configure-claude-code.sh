@@ -23,6 +23,7 @@ defaults=$(cat << 'EOF'
     "commit": "",
     "pr": ""
   },
+  "outputStyle": "Concise",
   "autoUpdatesChannel": "latest",
   "teammateMode": "tmux",
   "includeGitInstructions": true,
@@ -69,10 +70,8 @@ defaults=$(cat << 'EOF'
     "playground@claude-plugins-official": true,
     "learning-output-style@claude-plugins-official": true,
     "csharp-lsp@claude-plugins-official": true,
-    "data-engineering@claude-plugins-official": true,
     "cloudflare@claude-plugins-official": true,
-    "shopify-ai-toolkit@claude-plugins-official": true,
-    "duckdb-skills@claude-plugins-official": true
+    "shopify-ai-toolkit@claude-plugins-official": true
   },
   "env": {
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
