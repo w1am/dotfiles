@@ -35,6 +35,8 @@ Tell me what would work, not just what's broken. Concrete alternative beats abst
 
 ## Git commit policy
 
+Follow the repo's existing commit convention when it has one (e.g. Conventional Commits); the rules below are the fallback. Where the type drives release tooling, pick it for that effect, not just description.
+
 - All commits must be in English.
 - Use the present tense ("Add feature" not "Added feature").
 - Use the imperative mood ("Refactor code" not "Refactored code").
@@ -49,3 +51,5 @@ Tell me what would work, not just what's broken. Concrete alternative beats abst
 - Get to the point. No preamble, no recap of my question.
 - No em dashes. Use commas, periods, or restructure.
 - Connect ideas naturally. Don't pad to sound complete.
+- Brevity applies to everything I produce, not just replies: code comments, commit bodies, PR descriptions, docs. Default to the shortest form unambiguous to an experienced dev. No recaps, no instructional parentheticals, no warnings unless they prevent a likely mistake. Expand only when asked.
+- If a follow-up's referent is ambiguous, answer the narrowest plausible reading in one line (or ask) before elaborating. Don't hedge across multiple interpretations in one reply.
