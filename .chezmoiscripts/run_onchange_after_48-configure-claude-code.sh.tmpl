@@ -1,0 +1,44 @@
+#!/bin/sh
+set -eu
+
+settings="$HOME/.claude/settings.json"
+local_settings="$HOME/.claude/settings.local.json"
+
+if ! command -v jq >/dev/null 2>&1; then
+    echo "jq not found — skipping Claude Code settings (install jq first)"
+    exit 0
+fi
+
+mkdir -p "$HOME/.claude"
+
+# Baseline lives in .chezmoitemplates/claude-settings.json; chezmoi inlines it here.
+defaults=$(cat << 'EOF'
+{{ includeTemplate "claude-settings.json" }}
+EOF
+)
+
+existing="$(cat "$settings" 2>/dev/null || echo '{}')"
+
+# Deep-merge: defaults provide the base, existing file overrides any conflicts.
+printf '%s' "$existing" | jq --argjson defaults "$defaults" '$defaults * .' > "${settings}.tmp"
+mv "${settings}.tmp" "$settings"
+
+echo "Claude Code settings updated at $settings"
+
+# Allow-list baseline lives in .chezmoitemplates/claude-settings-local.json.
+allow=$(cat << 'EOF'
+{{ includeTemplate "claude-settings-local.json" }}
+EOF
+)
+
+existing_local="$(cat "$local_settings" 2>/dev/null || echo '{}')"
+
+printf '%s' "$existing_local" | jq --argjson allow "$allow" '
+  .permissions.allow = reduce $allow[] as $entry (
+    (.permissions.allow // []);
+    if index($entry) then . else . + [$entry] end
+  )
+' > "${local_settings}.tmp"
+mv "${local_settings}.tmp" "$local_settings"
+
+echo "Claude Code local settings updated at $local_settings"

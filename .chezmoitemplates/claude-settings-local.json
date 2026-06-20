@@ -1,0 +1,21 @@
+[
+  "Bash(bun:*)",
+  "Bash(npx:*)",
+  "Bash(node:*)",
+  "Bash(git add:*)",
+  "Bash(git commit:*)",
+  "Bash(git status:*)",
+  "Bash(git diff:*)",
+  "Bash(git log:*)",
+  "Bash(git branch:*)",
+  "Bash(git checkout:*)",
+  "Bash(git push origin:*)",
+  "Bash(gh:*)",
+  "Bash(mkdir:*)",
+  "Bash(ls:*)",
+  "Bash(grep:*)",
+  "Edit(*)",
+  "Write(*)",
+  "WebFetch",
+  "Skill(*)"
+]
