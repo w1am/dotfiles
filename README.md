@@ -1,17 +1,19 @@
 # dotfiles
 
-My config.
+My config. Manages Linux and macOS.
 
-New machine, one command. Needs only `curl`. chezmoi's builtin git clones the repo,
-then `run_*_before_` scripts install packages plus mise, and externals download as
-archives.
+New machine, one command. Needs only `curl`:
 
 ```sh
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply w1am
 ```
 
-Language runtimes (node, rust, bun, python, uv, dotnet, neovim, awscli) are declared in
-`~/.config/mise/config.toml`. Edit that file + `chezmoi apply` to add/bump versions.
+chezmoi clones the repo (builtin git, no system git needed), applies dotfiles, and runs
+provisioning scripts in two phases: `before_` installs system packages and tools,
+`after_` installs language runtimes via mise and configures the environment.
+
+Language runtimes are declared in `~/.config/mise/config.toml` — edit that file to
+add or bump versions.
 
 Edit a config, apply it, push it:
 
