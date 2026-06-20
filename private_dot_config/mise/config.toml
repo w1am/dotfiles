@@ -1,0 +1,10 @@
+[tools]
+node = "lts"
+pnpm = "latest"
+bun = "latest"
+python = "latest"
+uv = "latest"
+rust = "stable"
+dotnet = "lts"
+neovim = "stable"
+awscli = "latest"
