@@ -1,3 +1,4 @@
 /README.md
 /CLAUDE.md
+/INSTALLATION.md
 {{ if ne .chezmoi.os "darwin" }}.Brewfile{{ end }}
