@@ -2,8 +2,9 @@
 
 My config.
 
-New machine — one command (needs only `curl`; chezmoi's builtin git clones the repo,
-then `run_*_before_` scripts install packages + mise, externals download as archives):
+New machine, one command. Needs only `curl`. chezmoi's builtin git clones the repo,
+then `run_*_before_` scripts install packages plus mise, and externals download as
+archives.
 
 ```sh
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply w1am
