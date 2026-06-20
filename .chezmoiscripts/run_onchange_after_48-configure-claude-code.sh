@@ -30,19 +30,30 @@ defaults=$(cat << 'EOF'
   "showTurnDuration": true,
   "statusLine": {
     "type": "command",
-    "command": "~/.claude/statusline.sh",
+    "command": "~/.claude/bin/statusline.sh",
     "padding": 0
   },
   "permissions": {
     "defaultMode": "auto"
   },
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ~/.claude/bin/sudo-hook.py"
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude/notify-sound.sh"
+            "command": "~/.claude/bin/notify.sh"
           }
         ]
       }
