@@ -1,38 +1,28 @@
+# Archive (not git-repo) externals: no system git needed, so a bare machine can run
+# `chezmoi init --apply` directly (chezmoi's builtin git clones the source repo).
 [".oh-my-zsh"]
-    type = "git-repo"
-    url = "https://github.com/ohmyzsh/ohmyzsh.git"
+    type = "archive"
+    url = "https://github.com/ohmyzsh/ohmyzsh/archive/refs/heads/master.tar.gz"
+    stripComponents = 1
     refreshPeriod = "168h"
-    [".oh-my-zsh".clone]
-        args = ["--depth=1"]
-    [".oh-my-zsh".pull]
-        args = ["--ff-only"]
 
 [".oh-my-zsh/custom/plugins/zsh-autosuggestions"]
-    type = "git-repo"
-    url = "https://github.com/zsh-users/zsh-autosuggestions.git"
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-autosuggestions/archive/refs/heads/master.tar.gz"
+    stripComponents = 1
     refreshPeriod = "168h"
-    [".oh-my-zsh/custom/plugins/zsh-autosuggestions".clone]
-        args = ["--depth=1"]
-    [".oh-my-zsh/custom/plugins/zsh-autosuggestions".pull]
-        args = ["--ff-only"]
 
 [".oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
-    type = "git-repo"
-    url = "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-syntax-highlighting/archive/refs/heads/master.tar.gz"
+    stripComponents = 1
     refreshPeriod = "168h"
-    [".oh-my-zsh/custom/plugins/zsh-syntax-highlighting".clone]
-        args = ["--depth=1"]
-    [".oh-my-zsh/custom/plugins/zsh-syntax-highlighting".pull]
-        args = ["--ff-only"]
 
 [".oh-my-zsh/custom/plugins/zsh-completions"]
-    type = "git-repo"
-    url = "https://github.com/zsh-users/zsh-completions.git"
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-completions/archive/refs/heads/master.tar.gz"
+    stripComponents = 1
     refreshPeriod = "168h"
-    [".oh-my-zsh/custom/plugins/zsh-completions".clone]
-        args = ["--depth=1"]
-    [".oh-my-zsh/custom/plugins/zsh-completions".pull]
-        args = ["--ff-only"]
 
 {{ if eq .chezmoi.os "darwin" }}["Library/Fonts/JetBrainsMonoNerdFont"]{{ else }}[".local/share/fonts/JetBrainsMonoNerdFont"]{{ end }}
     type = "archive"
