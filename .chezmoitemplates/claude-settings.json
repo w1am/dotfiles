@@ -38,6 +38,10 @@
           {
             "type": "command",
             "command": "~/.claude/bin/notify.sh"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/bin/speak.sh"
           }
         ]
       }
