@@ -27,7 +27,7 @@ if ! command -v edge-tts >/dev/null 2>&1; then
 fi
 
 echo "Building TTS environment ($PACKAGES)..."
-uv venv --quiet --python "$PYTHON_VERSION" "$VENV"
+uv venv --quiet --allow-existing --python "$PYTHON_VERSION" "$VENV"
 uv pip install --quiet --python "$VENV/bin/python" $PACKAGES
 
 if "$VENV/bin/python" -c 'import kokoro_onnx' 2>/dev/null; then
