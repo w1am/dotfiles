@@ -6,6 +6,8 @@ LOCKFILE="/tmp/cc-tts-$(id -u).lock"
 
 media_playing() {
   local svc status
+  local bus="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/bus"
+  [ -S "$bus" ] && export DBUS_SESSION_BUS_ADDRESS="unix:path=$bus"
   for svc in $(busctl --user list 2>/dev/null | awk '/^org\.mpris\.MediaPlayer2\./{print $1}'); do
     status=$(busctl --user get-property "$svc" /org/mpris/MediaPlayer2 \
       org.mpris.MediaPlayer2.Player PlaybackStatus 2>/dev/null)
