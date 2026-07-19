@@ -6,6 +6,7 @@ from pathlib import Path
 
 PLAYERS = (
     ("mpv", ["--really-quiet", "--no-video", "--no-terminal"]),
+    ("afplay", []),
     ("ffplay", ["-nodisp", "-autoexit", "-loglevel", "quiet"]),
     ("paplay", []),
     ("aplay", ["-q"]),
