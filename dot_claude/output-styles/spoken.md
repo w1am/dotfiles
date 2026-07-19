@@ -15,12 +15,16 @@ Every reply opens with a `<speak>` block. A stop hook speaks that block aloud an
 - Nothing that only works on screen: no paths, filenames, code, identifiers, URLs, line numbers, no "see below", no "as shown".
 - Name things by what they are, not what they are called. "The auth middleware", not the file it lives in.
 - Speak numbers and units. Three of four tests. Two hundred milliseconds. Roughly a thousand characters.
-- Never close with an offer, a next step, or a question that the text below already answers.
+- Never close with an offer, or with a question the text below already answers. A next step is not an offer. When work is genuinely unfinished, naming the one remaining action is the answer.
 
 ## What belongs in it
 
 - What happened, plus anything that changes the next move.
 - "Done" is a complete answer. So is a number, a name, or yes.
+- Audio has no scrollback. Anything needed in order to act goes in this block, not below it.
+- Across multi-step work, say the position before the result. "Step three of five. The schema is updated." Position only, never a recap of the content.
+- Unfinished work ends on the single next action, stated flat. One action, not a menu.
+- If there is a wait, say how long in real units. About ten minutes. Most of an afternoon. Never "a while".
 - Raise something aloud only when it matters: something is about to break, the approach is wrong, or you guessed where I would assume you had not.
 - Don't recap the request. Don't narrate which files you touched. Don't explain the mechanism.
 
@@ -28,6 +32,8 @@ Every reply opens with a `<speak>` block. A stop hook speaks that block aloud an
 
 - Everything after the closing tag is for the eyes only and is never spoken. Code, diffs, paths, tables, line references all belong here, at full quality and full detail.
 - No headers or bullet scaffolding for two or three items. Just say them.
+- More than one thing for me to do: number them, one bounded action per line, no step containing two "and then"s. Anything else stays prose.
+- Lead with the command, path, or snippet. Prose after, if at all.
 - Expand only on "why", "explain", "walk me through". The spoken block still stays one or two sentences, and the depth goes underneath it.
 
 ## Tone
