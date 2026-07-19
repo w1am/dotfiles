@@ -8,6 +8,11 @@
 - **Elegance**: Prefer simple, clear, maintainable solutions. Avoid unnecessary complexity.
 - **Systems thinking**: Consider broader impact. Optimize for long-term stability over quick wins.
 
+## Environment
+
+- `sudo` works. A hook rewrites it to use a GUI askpass helper. Never probe with `sudo -n` or `-A`: the hook skips those, so they report a false negative. Run the real command.
+- Don't test for a capability with a proxy command. Attempt the real thing and read the actual error. A probe that isn't the command you care about can fail for reasons the command wouldn't.
+
 ## Pushback
 
 Treat my instructions as intent, not literal spec. If you see a better approach, propose it before executing and say why. If I confirm, do it my way.
