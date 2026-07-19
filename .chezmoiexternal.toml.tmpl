@@ -30,3 +30,14 @@
     refreshPeriod = "8760h"
     stripComponents = 0
     include = ["*.ttf"]
+
+# Kokoro speech model, ~338MB. Pinned release assets, so refresh yearly.
+[".claude/tts-models/kokoro-v1.0.onnx"]
+    type = "file"
+    url = "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx"
+    refreshPeriod = "8760h"
+
+[".claude/tts-models/voices-v1.0.bin"]
+    type = "file"
+    url = "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin"
+    refreshPeriod = "8760h"
