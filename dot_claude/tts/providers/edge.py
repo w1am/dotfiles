@@ -17,9 +17,9 @@ class Edge(Provider):
     name = "edge"
 
     def __init__(self) -> None:
-        self.voice = config.env("CC_TTS_VOICE", "en-GB-ThomasNeural")
-        self.rate = config.env("CC_TTS_RATE", "+0%")
-        self.pitch = config.env("CC_TTS_PITCH", "-15Hz")
+        self.voice = config.env("CC_TTS_VOICE", "en-IE-EmilyNeural")
+        self.rate = config.env("CC_TTS_RATE", "+6%")
+        self.pitch = config.env("CC_TTS_PITCH", "-5Hz")
         self.timeout = config.env_int("CC_TTS_EDGE_TIMEOUT", 30)
 
     def binary(self) -> str | None:

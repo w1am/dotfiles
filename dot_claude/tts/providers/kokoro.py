@@ -7,7 +7,7 @@ from .. import config
 from ..registry import register
 from .base import Provider, SynthesisFailed, Unavailable, Voice
 
-BRITISH_MALE = "bm_"
+BRITISH_FEMALE = "bf_"
 
 
 @cache
@@ -24,8 +24,8 @@ class Kokoro(Provider):
 
     def __init__(self) -> None:
         self.models = Path(config.env("CC_TTS_KOKORO_MODELS", str(config.ROOT / "tts-models")))
-        self.voice = config.env("CC_TTS_KOKORO_VOICE", "bm_daniel")
-        self.speed = config.env_float("CC_TTS_KOKORO_SPEED", 1.0)
+        self.voice = config.env("CC_TTS_KOKORO_VOICE", "bf_emma")
+        self.speed = config.env_float("CC_TTS_KOKORO_SPEED", 1.06)
         self.lang = config.env("CC_TTS_KOKORO_LANG", "en-gb")
 
     def check(self) -> None:

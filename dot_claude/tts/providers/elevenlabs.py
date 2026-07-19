@@ -11,7 +11,7 @@ from ..registry import register
 from .base import Provider, SynthesisFailed, Unavailable, Voice
 
 API = "https://api.elevenlabs.io"
-DANIEL = "onwK4e9ZLuTAKqWW03F9"
+ALICE = "Xb7hH8MSUJpSbSDYk0k2"
 
 
 @register
@@ -21,11 +21,11 @@ class ElevenLabs(Provider):
 
     def __init__(self) -> None:
         self.keyfile = Path(config.env("CC_TTS_EL_KEYFILE", str(config.ROOT / ".elevenlabs-key")))
-        self.voice = config.env("CC_TTS_EL_VOICE", DANIEL)
+        self.voice = config.env("CC_TTS_EL_VOICE", ALICE)
         self.model = config.env("CC_TTS_EL_MODEL", "eleven_turbo_v2_5")
-        self.stability = config.env_float("CC_TTS_EL_STABILITY", 0.65)
-        self.similarity = config.env_float("CC_TTS_EL_SIMILARITY", 0.80)
-        self.speed = config.env_float("CC_TTS_EL_SPEED", 1.0)
+        self.stability = config.env_float("CC_TTS_EL_STABILITY", 0.85)
+        self.similarity = config.env_float("CC_TTS_EL_SIMILARITY", 0.90)
+        self.speed = config.env_float("CC_TTS_EL_SPEED", 1.08)
         self.timeout = config.env_int("CC_TTS_EL_TIMEOUT", 20)
 
     def key(self) -> str:
