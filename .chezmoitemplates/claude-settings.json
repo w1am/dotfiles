@@ -7,7 +7,7 @@
     "commit": "",
     "pr": ""
   },
-  "outputStyle": "Concise",
+  "outputStyle": "Spoken",
   "autoUpdatesChannel": "latest",
   "teammateMode": "tmux",
   "includeGitInstructions": true,
