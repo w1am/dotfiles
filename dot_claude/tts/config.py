@@ -41,6 +41,10 @@ def max_chars() -> int:
     return env_int("CC_TTS_MAX_CHARS", 2000)
 
 
+def volume() -> int:
+    return max(0, min(100, env_int("CC_TTS_VOLUME", 100)))
+
+
 def sample_text() -> str:
     return env("CC_TTS_SAMPLE", SAMPLE)
 
