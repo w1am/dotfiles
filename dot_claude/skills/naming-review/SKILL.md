@@ -4,7 +4,7 @@ description: >-
   Fix names in recently-changed code, including when the right fix is to delete
   or split the symbol rather than rename it. Catches drift (identifiers that
   stopped matching what they hold, one concept named twice, one name hiding two,
-  UI or wire words in domain names) and structural tells (dangling prepositions,
+  UI or wire words in domain names) and structural tells (nouns naming actions,
   boolean blobs, single-use wrappers, optional params fusing two operations).
   Trigger on "review vocab", "simplify the names", "check naming", "are these
   names consistent", "this name bothers me", "what would you call this", or after
@@ -109,10 +109,14 @@ wins rather than silently picking.
 
 These present as style problems and are usually structure problems:
 
-- **Dangling preposition** — `addressKeyFor`, `listingsOn`, `isSoleListingFor`.
-  The preposition is propping up an identifier that stands alone and has to
-  restate its own subject. Either the subject belongs in a namespace
-  (`Property.register`), or the symbol shouldn't be module-level.
+- **Noun naming an action.** A bare noun is fine for a pure derivation —
+  `addressKey(input)`, `particulars(input)` compute and return, nothing else.
+  Anything that performs I/O is an action and wants a verb: `propertyAt(ctx, x)`
+  → `findProperty`. Use `find` when the miss is a null and `get` when it throws.
+  A trailing preposition is the usual symptom (`addressKeyFor`, `listingsOn`) but
+  not the cause — `listingsOn(ctx, propertyId)` reads as perfectly good English
+  and is still the wrong shape. Ask whether the function touches the world, not
+  whether it scans nicely.
 - **`is` + compound noun phrase** — `isSoleListingOnProperty`. One identifier
   carrying a whole sentence. `is` plus a single adjective is fine; `is` plus a
   compressed clause is not.
@@ -168,7 +172,7 @@ A Convex module with an address-keyed property lookup. The reviewer objects to
 
 **Wrong:** propose `isSoleListingOnProperty`. Rejected — `is` plus a compressed
 sentence. Propose `isShared`. Rejected — bare `is` prefix reads as unconventional
-to them. Extract `listingsOn`. Rejected — dangling preposition. Three rounds,
+to them. Extract `listingsOn`. Rejected — a noun naming a query. Three rounds,
 three rejections, because every candidate assumed the predicate should exist.
 
 **Right:** after the second rejection, stop naming and look at the symbol.
@@ -184,9 +188,9 @@ one. The fused function needs a boolean to ask which case it is in — and that
 boolean is the name nobody can get right.
 
 ```
-resolveProperty  → propertyAt / registerProperty / reassignProperty
+resolveProperty  → findProperty / registerProperty / reassignProperty
 isSoleListingFor → deleted; the query inlines, and `rows.length === 1` tests it
 ```
 
-Nothing left to name. Every remaining identifier is a plain verb or noun with no
-preposition holding it up.
+Nothing left to name. Every remaining identifier is a verb, because every one of
+them touches the database; the pure projections beside them keep their nouns.
