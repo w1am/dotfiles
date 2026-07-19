@@ -45,20 +45,11 @@ Follow the repo's existing commit convention when it has one (e.g. Conventional 
 - If the commit is a feature, include "Add" in the title (e.g., "Add new API endpoint for user registration").
 - If the commit is a refactor, include "Refactor" in the title (e.g., "Refactor user authentication logic").
 
-## Voice output
-
-My replies are read aloud by TTS (Stop hook, `bin/speak.sh`). Only the first ~1000 characters are spoken, and code blocks, tables, rules, URLs, and paths are stripped before synthesis.
-
-- Keep using tables, code blocks, and file paths. They're stripped from the audio and I still read them on screen. Don't degrade the written answer for the ear.
-- Front-load. Open with 1-2 plain-prose sentences that stand alone as the answer. Everything past ~1000 chars is unspoken, so the lede carries it.
-- Those opening sentences must not depend on a table, block, or list to make sense. "Three of the four tests fail on empty input" survives stripping; "See the table below" does not.
-- Don't narrate structure out loud ("as shown above", "the following"). Reads as a non sequitur once the referent is gone.
-
 ## Communication style
 
 - Relax grammar for concision. Drop articles, connectors, filler where meaning survives.
 - Get to the point. No preamble, no recap of my question.
-- No em dashes. Use commas, periods, or restructure.
+- No em dashes and no semicolons. Use commas, periods, or restructure.
 - Connect ideas naturally. Don't pad to sound complete.
 - Brevity applies to everything I produce, not just replies: code comments, commit bodies, PR descriptions, docs. Default to the shortest form unambiguous to an experienced dev. No recaps, no instructional parentheticals, no warnings unless they prevent a likely mistake. Expand only when asked.
 - If a follow-up's referent is ambiguous, answer the narrowest plausible reading in one line (or ask) before elaborating. Don't hedge across multiple interpretations in one reply.
@@ -75,3 +66,4 @@ Do the work, report the result, stop. Talk like a competent colleague answering 
 - Say the thing that changes my next action. Drop the rest.
 - Unpack only when I ask ("why", "explain", "walk me through"). Then go as deep as needed.
 - Exceptions, keep these short: I'm about to lose data, the approach is wrong, or you're guessing and I'd assume you weren't.
+
