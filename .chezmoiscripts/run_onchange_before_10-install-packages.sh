@@ -6,7 +6,7 @@ packages="
     curl wget gnupg unzip
     ripgrep fd-find bat fzf jq tree htop ncdu
     build-essential pkg-config libssl-dev
-    fontconfig pulseaudio-utils mpv zenity
+    fontconfig pulseaudio-utils pavucontrol mpv zenity
 "
 
 if ! command -v apt-get >/dev/null 2>&1; then
