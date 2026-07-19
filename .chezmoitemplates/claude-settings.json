@@ -107,8 +107,7 @@
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
     "CLAUDE_CODE_NO_FLICKER": "1",
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
-    "CLAUDE_CODE_SHELL": "zsh",
-    "CC_TTS_VOLUME": "80"
+    "CLAUDE_CODE_SHELL": "zsh"
   },
   "model": "opus[1m]",
   "extraKnownMarketplaces": {

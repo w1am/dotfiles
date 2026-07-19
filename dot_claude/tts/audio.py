@@ -18,11 +18,10 @@ PLAYERS = (
 STREAM_NAME = "Claude TTS"
 STREAM_PROPS = f"application.name='{STREAM_NAME}' application.id={STREAM_NAME}"
 
-TUNING = {
-    "mpv": lambda v: [f"--audio-client-name={STREAM_NAME}", f"--volume={v}"],
-    "afplay": lambda v: ["-v", f"{v / 100:.2f}"],
-    "ffplay": lambda v: ["-volume", str(v)],
-    "paplay": lambda v: [f"--volume={round(v * 655.36)}"],
+LEVEL = "speechnorm=e=12.5:r=0.0005:l=1,alimiter=limit=0.95:level=disabled"
+
+EXTRA = {
+    "mpv": [f"--audio-client-name={STREAM_NAME}", f"--af=lavfi=[{LEVEL}]"],
 }
 
 
@@ -38,8 +37,7 @@ def play(path: Path) -> None:
     if not found:
         raise RuntimeError(f"no audio player found, tried: {', '.join(p for p, _ in PLAYERS)}")
     command, flags = found
-    tune = TUNING.get(Path(command).name)
-    extra = tune(config.volume()) if tune else []
+    extra = EXTRA.get(Path(command).name, [])
     subprocess.run([command, *flags, *extra, str(path)], check=False,
                    env={**os.environ, "PULSE_PROP": STREAM_PROPS},
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
