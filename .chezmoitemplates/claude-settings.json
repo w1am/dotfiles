@@ -59,7 +59,6 @@
     "notify@w1am": true,
     "sudo-askpass@w1am": true,
     "tmux-title@w1am": true,
-    "dev-commands@w1am": true,
     "w1am-skills@w1am": true
   },
   "env": {
