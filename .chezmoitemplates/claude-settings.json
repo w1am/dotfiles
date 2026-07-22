@@ -55,12 +55,12 @@
     "frontend-design@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
     "prefect@prefect": true,
-    "tts@claude-plugins": true,
-    "notify@claude-plugins": true,
-    "sudo-askpass@claude-plugins": true,
-    "tmux-title@claude-plugins": true,
-    "dev-commands@claude-plugins": true,
-    "w1am-skills@claude-plugins": true
+    "tts@w1am": true,
+    "notify@w1am": true,
+    "sudo-askpass@w1am": true,
+    "tmux-title@w1am": true,
+    "dev-commands@w1am": true,
+    "w1am-skills@w1am": true
   },
   "env": {
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
@@ -88,7 +88,7 @@
         "repo": "prefecthq/prefect-mcp-server"
       }
     },
-    "claude-plugins": {
+    "w1am": {
       "source": {
         "source": "github",
         "repo": "w1am/claude-plugins"
