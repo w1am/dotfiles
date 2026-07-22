@@ -4,7 +4,7 @@ import argparse
 import json
 import sys
 
-from . import audio, config, registry, speaker, text
+from . import audio, config, media, registry, speaker, text
 from .providers.base import SynthesisFailed, Unavailable
 
 
@@ -15,7 +15,7 @@ def cmd_speak(args) -> int:
     except ValueError:
         message = payload
     spoken = text.spoken(message, config.max_chars())
-    if not spoken:
+    if not spoken or media.playing():
         return 0
     return say(spoken, args)
 

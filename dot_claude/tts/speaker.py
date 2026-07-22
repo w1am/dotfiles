@@ -4,7 +4,7 @@ import tempfile
 from contextlib import contextmanager
 from pathlib import Path
 
-from . import audio, config, registry
+from . import audio, config, media, registry
 from .providers.base import Provider, SynthesisFailed, Unavailable
 
 
@@ -48,6 +48,9 @@ def speak(text: str, names: tuple[str, ...] | None = None) -> str:
                 failures.append(f"{name}: {error}")
                 continue
             config.log.debug("%s: ok", name)
+            if media.playing():
+                config.log.debug("%s: media playing, skipped playback", name)
+                return name
             audio.play(path)
             return name
     raise NothingSpoke(failures)
