@@ -60,7 +60,7 @@
     "sudo-askpass@claude-plugins": true,
     "tmux-title@claude-plugins": true,
     "dev-commands@claude-plugins": true,
-    "naming-review@claude-plugins": true
+    "skills@claude-plugins": true
   },
   "env": {
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
