@@ -91,7 +91,7 @@
     "w1am": {
       "source": {
         "source": "github",
-        "repo": "w1am/claude-plugins"
+        "repo": "w1am/skills"
       }
     }
   },
