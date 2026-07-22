@@ -4,7 +4,7 @@ import logging
 import os
 from pathlib import Path
 
-ROOT = Path.home() / ".claude"
+ROOT = Path(os.environ.get("CC_TTS_ROOT", "").strip() or Path.home() / ".claude")
 DEFAULT_CHAIN = ("elevenlabs", "kokoro", "edge")
 SAMPLE = "Done. The timeout was in seconds, not milliseconds. Three of four tests now pass."
 
