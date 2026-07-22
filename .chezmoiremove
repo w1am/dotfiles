@@ -1,0 +1,12 @@
+.claude/bin/speak.sh
+.claude/bin/claude-tts
+.claude/bin/notify.sh
+.claude/bin/sudo-hook.py
+.claude/bin/sudo-askpass.sh
+.claude/tts
+.claude/commands/session.md
+.claude/commands/cut-release.md
+.claude/commands/deepen.md
+.claude/skills/naming-review
+.claude/output-styles/spoken.md
+.local/bin/claude-tts

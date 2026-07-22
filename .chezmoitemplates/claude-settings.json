@@ -20,53 +20,6 @@
   "permissions": {
     "defaultMode": "auto"
   },
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 ~/.claude/bin/sudo-hook.py"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/bin/notify.sh"
-          },
-          {
-            "type": "command",
-            "command": "~/.claude/bin/speak.sh"
-          }
-        ]
-      }
-    ],
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "[ -n \"$TMUX\" ] && tmux rename-window \"cc:$(basename \"$PWD\")\""
-          }
-        ]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "[ -n \"$TMUX\" ] && tmux set-option -w automatic-rename on"
-          }
-        ]
-      }
-    ]
-  },
   "worktree": {
     "symlinkDirectories": [
       "node_modules",
@@ -101,7 +54,13 @@
     "shopify-plugin@shopify-ai-toolkit": true,
     "frontend-design@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
-    "prefect@prefect": true
+    "prefect@prefect": true,
+    "tts@claude-plugins": true,
+    "notify@claude-plugins": true,
+    "sudo-askpass@claude-plugins": true,
+    "tmux-title@claude-plugins": true,
+    "dev-commands@claude-plugins": true,
+    "naming-review@claude-plugins": true
   },
   "env": {
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
@@ -127,6 +86,12 @@
       "source": {
         "source": "github",
         "repo": "prefecthq/prefect-mcp-server"
+      }
+    },
+    "claude-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "w1am/claude-plugins"
       }
     }
   },
